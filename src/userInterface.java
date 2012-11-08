@@ -20,8 +20,6 @@ public class userInterface {
 		String PrevReply = "";
 		String[] InputPieces;
 		String[] ReplyPieces;
-		int[] symptomStats = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
-		int[] disorderStats = new int[]{0,0,0,0,0,0,0,0};
 		int turn = 0;
 		boolean end = false;
 		
@@ -37,8 +35,8 @@ public class userInterface {
 			UserInput = CVcontroller.cleanup(scan.nextLine());
 			turn ++;
 			MyReply = CVcontroller.findReply(UserInput, HTcontroller.getResp());
-			STcontroller.symptomStats(UserInput, symptomStats, HTcontroller.getSymp());
-			STcontroller.disorderStats(UserInput, disorderStats, HTcontroller.getDis());
+			STcontroller.symptomStats(UserInput, HTcontroller.getSymp());
+			STcontroller.disorderStats(UserInput, HTcontroller.getDis());
 			STcontroller.triggerStats(UserInput, HTcontroller.getTrig());
 			if(MyReply.equals("NULL"))
 				MyReply = CVcontroller.findReply(CVcontroller.cleanup(PrevReply), HTcontroller.getResp());
@@ -46,5 +44,7 @@ public class userInterface {
 			turn ++;
 			if(turn>2) end=true;
 		}
+		
+		
 	}
 }
