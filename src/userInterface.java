@@ -42,9 +42,9 @@ public class userInterface {
 				MyReply = CVcontroller.findReply(CVcontroller.cleanup(PrevReply), HTcontroller.getResp());
 			System.out.println("Doc: " + MyReply);
 			turn ++;
-			if(turn>2) end=true;
+			if(turn>10) end=true;
 		}
 		
-		
+		System.out.print(STcontroller.getStats());
 	}
 }

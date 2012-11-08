@@ -64,10 +64,10 @@ public class STcontroller {
 		output += "\n-------------------------------------";
 		output += "\nHappines:\t" + symptomStats[0];
 		output += "\nExcitement:\t" + symptomStats[1];
-		output += "\nAnger:\t" + symptomStats[2];
+		output += "\nAnger:\t\t" + symptomStats[2];
 		output += "\nAgression:\t" + symptomStats[3];
 		output += "\nSadness:\t" + symptomStats[4];
-		output += "\nFear:\t" + symptomStats[5];
+		output += "\nFear:\t\t" + symptomStats[5];
 		output += "\nAnxiety:\t" + symptomStats[6];
 		output += "\nConfusion:\t" + symptomStats[7];
 		output += "\nMemory Loss:\t" + symptomStats[8];
