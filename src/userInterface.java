@@ -8,9 +8,9 @@ public class userInterface {
 		HTcontroller HTcontroller = new HTcontroller();
 
 		CVcontroller CVcontroller = new CVcontroller();
-		
+
 		STcontroller STcontroller = new STcontroller();
-		
+
 		Scanner scan = new Scanner(System.in);
 
 		// Variables for use in conversation analysis
@@ -22,7 +22,6 @@ public class userInterface {
 		String[] ReplyPieces;
 		int turn = 0;
 		boolean end = false;
-		
 
 		System.out.println("Welcome, you are now speaking with a mental health professional, " +
 				"for best results please participate fully and answer any questions in detail. \n" +
@@ -44,7 +43,7 @@ public class userInterface {
 			turn ++;
 			if(turn>10) end=true;
 		}
-		
+
 		System.out.print(STcontroller.getStats());
 	}
 }

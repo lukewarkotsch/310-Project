@@ -4,11 +4,11 @@ import java.util.Random;
 public class CVcontroller {
 
 	Random generator;
-	
+
 	public CVcontroller(){
 		generator = new Random();
 	}
-	
+
 	public String findReply(String searchString, Hashtable<String, String[]> HT){
 		String replyString;
 		String[] SearchPieces = searchString.split(" ");

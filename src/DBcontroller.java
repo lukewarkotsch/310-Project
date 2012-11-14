@@ -11,12 +11,12 @@ public class DBcontroller {
 	private Mongo mongoInstance;
 	private DB mongoDB;
 	private DBCollection convos;
-	
+
 	private BasicDBObject symptoms;
 	private BasicDBObject disorders;
 	private BasicDBObject triggers;
 	private BasicDBObject convo;
-	
+
 	public DBcontroller() throws UnknownHostException{
 		mongoInstance = new Mongo("localhost", 27017);		// Connects to local host Mongo Instance on port 27017
 		mongoDB = mongoInstance.getDB("doc-talk"); 			// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
@@ -26,7 +26,7 @@ public class DBcontroller {
 		triggers = new BasicDBObject();
 		convo = new BasicDBObject();
 	}
-	
+
 	public void addToSymptoms(String[] keys, int[] values){
 		for(int i=0; i<keys.length; i++)
 			symptoms.put(keys[i], values[i]);

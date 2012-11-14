@@ -1,7 +1,7 @@
 import java.util.Hashtable;
 
 public class HTcontroller {
-	
+
 	Hashtable<String, String[]> responsesHT;
 	Hashtable<String, int[]> symptomsHT;
 	Hashtable<String, int[]> disordersHT;
@@ -16,7 +16,7 @@ public class HTcontroller {
 		initDis();
 		triggersHT = new Hashtable<String, Integer>();
 	}
-	
+
 	public Hashtable<String, String[]> getResp(){
 		return responsesHT;
 	}
