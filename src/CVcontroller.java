@@ -9,6 +9,19 @@ public class CVcontroller {
 		generator = new Random();
 	}
 
+	public String reply(String searchString, HTcontroller HTC, int turn){
+		String reply = "";
+		Hashtable<String, String[]> HT = HTC.getResp();
+		int size = HT.size();
+		if(size>0){
+			int num = generator.nextInt(size);
+			String[] data = HT.get(Integer.toString(num));
+			reply = data[0];
+			HTC.changeResponses(Integer.parseInt(data[1]));
+		}
+		return reply;
+	}
+
 	public String findReply(String searchString, Hashtable<String, String[]> HT){
 		String replyString;
 		String[] SearchPieces = searchString.split(" ");

@@ -27,13 +27,16 @@ public class userInterface {
 				"for best results please participate fully and answer any questions in detail. \n" +
 				"Feel free to speak openly and discuss any sensitive topics as this conversation is completely confidential.\n");
 
+		HTcontroller.changeResponses(0);
+		
 		while (!end) {
 			PrevUserInput = UserInput;
 			PrevReply = MyReply;
 			System.out.print("You: ");
 			UserInput = CVcontroller.cleanup(scan.nextLine());
 			turn ++;
-			MyReply = CVcontroller.findReply(UserInput, HTcontroller.getResp());
+			//MyReply = CVcontroller.findReply(UserInput, HTcontroller.getResp());
+			MyReply = CVcontroller.reply(UserInput, HTcontroller, turn);
 			STcontroller.symptomStats(UserInput, HTcontroller.getSymp());
 			STcontroller.disorderStats(UserInput, HTcontroller.getDis());
 			STcontroller.triggerStats(UserInput, HTcontroller.getTrig());
@@ -41,7 +44,7 @@ public class userInterface {
 				MyReply = CVcontroller.findReply(CVcontroller.cleanup(PrevReply), HTcontroller.getResp());
 			System.out.println("Doc: " + MyReply);
 			turn ++;
-			if(turn>10) end=true;
+			if(turn>20) end=true;
 		}
 
 		System.out.print(STcontroller.getStats());
