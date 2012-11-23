@@ -47,7 +47,7 @@ public class HTcontroller {
 		responsesHT.put("your name", new String[]{"Dont worry about my name, you can just call me Doc"});
 		responsesHT.put("Doc", new String[]{"Yes?"});
 	}
-	
+
 	public void changeResponses(int num){
 		responsesHT.clear();
 		switch(num){
@@ -91,6 +91,85 @@ public class HTcontroller {
 			break;
 		case 10:
 			responsesHT.put("0", new String[]{"Why is it that you have come to seek help now, what has changed?", "11"});
+			break;
+		case 12:
+			responsesHT.put("0", new String[]{"Do you ever feel as if you could accomplish anything?", "13"});
+			responsesHT.put("1", new String[]{"Do you ever experience short periods of innappropriate anger?", "14"});
+			responsesHT.put("2", new String[]{"Do you ever experience long periods of sadness or lonliness?", "15"});
+			break;
+		case 13:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "16"});
+			break;
+		case 14:
+			responsesHT.put("0", new String[]{"What do you think is the cause?", "16"});
+			break;
+		case 15:
+			responsesHT.put("0", new String[]{"Do these feelings often confuse you?", "16"});
+			break;
+		case 16:
+			responsesHT.put("0", new String[]{"Between happiness, excitement, sadness and anger, what emotion do you experience most often?", "100"});
+			break;
+		case 20:
+			responsesHT.put("0", new String[]{"Tell me about something that often frustrates you.", "21"});
+			responsesHT.put("1", new String[]{"Do you ever take out your anger in a physical way?", "22"});
+			responsesHT.put("2", new String[]{"Have you hurt anyone before?", "23"});
+			break;
+		case 21:
+			responsesHT.put("0", new String[]{"Does it seem appropriate to be so bothered by it?", "24"});
+			responsesHT.put("1", new String[]{"How could you avoid it in the future?", "24"});
+			break;
+		case 22:
+			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
+			break;
+		case 23:
+			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
+			responsesHT.put("1", new String[]{"Do you believe they deserved it?", "26"});
+			break;
+		case 24:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
+			break;
+		case 25:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
+			responsesHT.put("1", new String[]{"What do you think is the cause of these feelings?", "27"});
+			responsesHT.put("2", new String[]{"Do these feelings often confuse you?", "27"});
+			break;
+		case 26:
+			responsesHT.put("0", new String[]{"What do you think is the cause of these feelings?", "27"});
+			responsesHT.put("1", new String[]{"Do these feelings often confuse you?", "27"});
+		case 27:
+			responsesHT.put("0", new String[]{"Along with anger, do you ever experience periods of unexplained happiness or excitement?", "28"});
+			responsesHT.put("1", new String[]{"Along with anger, do you ever experience periods of unexplained sadness or loneliness?", "28"});
+			break;
+		case 28:
+			responsesHT.put("0", new String[]{"Between anger, aggression, happiness, and excitement, which do you experience most often?", "100"});
+		case 30:
+			responsesHT.put("0", new String[]{"How often do you feel sad?", "31"});
+			responsesHT.put("1", new String[]{"Do you often feel alone?", "32"});
+			responsesHT.put("2", new String[]{"Tell me about something that makes you sad?", "33"});
+			responsesHT.put("3", new String[]{"Why do you feel this way?", "34"});
+			break;
+		case 31:
+			responsesHT.put("0", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
+			break;
+		case 32:
+			responsesHT.put("0", new String[]{"Why do you feel alone?", "35"});
+			responsesHT.put("1", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
+			break;
+		case 33:
+			responsesHT.put("0", new String[]{"Why does it make you sad?", "35"});
+			break;
+		case 34:
+			responsesHT.put("0", new String[]{"How do you think this could change?", "35"});
+			break;
+		case 35:
+			responsesHT.put("0", new String[]{"Do you ever feel angry or frustrated for no reason?", "36"});
+			responsesHT.put("0", new String[]{"Do you ever experience periods of unexplained joy or confidence?", "36"});
+			break;
+		case 36:
+			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "100"});
+			break;
+		case 100:
+			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
 		}
 	}
 
@@ -215,7 +294,7 @@ public class HTcontroller {
 		disordersHT.put("annoying", 			new int[]{3, 2, 0, 0, 1, 0, 0, 0});
 		disordersHT.put("really good", 			new int[]{3, 0, 0, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - IED words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]
@@ -229,7 +308,7 @@ public class HTcontroller {
 		disordersHT.put("violent", 				new int[]{0, 8, 0, 0, 0, 0, 0, 0});
 		disordersHT.put("assault", 				new int[]{0, 10, 0, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - Depression words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]
@@ -252,7 +331,7 @@ public class HTcontroller {
 		disordersHT.put("cramp", 				new int[]{0, 0, 1, 0, 1, 0, 0, 0});
 		disordersHT.put("empty", 				new int[]{0, 0, 2, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - Anxiety words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]
@@ -269,7 +348,7 @@ public class HTcontroller {
 		disordersHT.put("nightmare", 			new int[]{0, 0, 0, 0, 6, 0, 0, 0});
 		disordersHT.put("flashback", 			new int[]{0, 0, 0, 0, 6, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - Amnesia words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]
@@ -285,7 +364,7 @@ public class HTcontroller {
 		disordersHT.put("disoriented", 			new int[]{0, 0, 0, 0, 0, 3, 2, 0});
 		disordersHT.put("memory loss", 			new int[]{0, 0, 0, 0, 0, 8, 6, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - Altzheimers words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]
@@ -303,7 +382,7 @@ public class HTcontroller {
 		disordersHT.put("misplaced", 			new int[]{0, 0, 0, 0, 0, 0, 5, 0});
 		disordersHT.put("lost", 				new int[]{0, 0, 0, 0, 0, 0, 5, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
-		
+
 		// - - - - - - - - Schizophrenia words - - - - - - - - 
 		// Order of disorder values in array ->
 		// [manic disorder, IED, depression, bipolar, anxiety disorder, amnesia, altzheimers, schizophrenia]

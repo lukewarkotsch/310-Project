@@ -4,8 +4,8 @@ import java.util.Date;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.Mongo;
-
 
 public class DBcontroller {
 	private Mongo mongoInstance;
@@ -19,7 +19,7 @@ public class DBcontroller {
 
 	public DBcontroller() throws UnknownHostException{
 		mongoInstance = new Mongo("localhost", 27017);		// Connects to local host Mongo Instance on port 27017
-		mongoDB = mongoInstance.getDB("doc-talk"); 			// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
+		mongoDB = mongoInstance.getDB("easy-diagnosis"); 	// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
 		convos = mongoDB.getCollection("conversations"); 	// Attempts to get an existing collection from chatterbox, creates one if it does not exist
 		symptoms = new BasicDBObject();
 		disorders = new BasicDBObject();
@@ -52,5 +52,16 @@ public class DBcontroller {
 		Date date = new Date();
 		convo.put("Date", date.toString());
 		convos.insert(convo);
+	}
+
+	public void printAll(){
+		DBCursor cursor = convos.find();
+		try {
+			while(cursor.hasNext()) {
+				System.out.println(cursor.next());
+			}
+		} finally {
+			cursor.close();
+		}
 	}
 }
