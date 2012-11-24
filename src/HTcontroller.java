@@ -2,14 +2,15 @@ import java.util.Hashtable;
 
 public class HTcontroller {
 
-	Hashtable<String, String[]> responsesHT;
-	Hashtable<String, int[]> symptomsHT;
-	Hashtable<String, int[]> disordersHT;
-	Hashtable<String, Integer> triggersHT;
+	// Instance data used by the controller
+	Hashtable<String, String[]> responsesHT; // Contains the agents conversational tree
+	Hashtable<String, int[]> symptomsHT; // Contains points towards symptoms the user has shown
+	Hashtable<String, int[]> disordersHT; // Contains points towards disorders the user is displaying
+	Hashtable<String, Integer> triggersHT; // Contains words the user has be typing
 
+	// Constructor initializing the instance data
 	public HTcontroller(){
 		responsesHT = new Hashtable<String, String[]>();
-		initResp();
 		symptomsHT = new Hashtable<String, int[]>();
 		initSymp();
 		disordersHT = new Hashtable<String, int[]>();
@@ -17,6 +18,7 @@ public class HTcontroller {
 		triggersHT = new Hashtable<String, Integer>();
 	}
 
+	// Getter methods for each instance variable
 	public Hashtable<String, String[]> getResp(){
 		return responsesHT;
 	}
@@ -30,149 +32,7 @@ public class HTcontroller {
 		return triggersHT;
 	}
 
-	private void initResp(){
-		responsesHT.put("hello", new String[]{"Hello", "Hi there", "Hello, how are you today?", "Hi there, how have you been?"});
-		responsesHT.put("hi", new String[]{"Hello", "Hi there", "Hello, how are you today?", "Hi there, how have you been?"});
-		responsesHT.put("hey", new String[]{"Hello", "Hi there", "Hello, how are you today?", "Hi there, how have you been?"});
-		responsesHT.put("yo", new String[]{"Hello", "Hi there", "Hello, how are you today?", "Hi there, how have you been?"});
-		responsesHT.put("sup", new String[]{"Hello", "Hi there", "Hello, how are you today?", "Hi there, how have you been?"});
-		responsesHT.put("how are you", new String[]{"Im doing fine, yourself?", "Im quite well thanks, and what about you?", "Im good, how are you?"});
-		responsesHT.put("hows it going", new String[]{"Im doing fine, yourself?", "Im quite well thanks, and what about you?", "Im good, how are you?"});
-		responsesHT.put("goodbye", new String[]{"Goodbye, it was nice talking with you."});
-		responsesHT.put("bye", new String[]{"Goodbye, it was nice talking with you."});
-		responsesHT.put("why", new String[]{"Thats not important, why dont you tell me something that you dont often talk about."});
-		responsesHT.put("null", new String[]{"Tell me something that I dont know about you"});
-		responsesHT.put("you", new String[]{"NULL"});
-		responsesHT.put("new", new String[]{"Im not very interesting, why dont you tell me about yourself?"});
-		responsesHT.put("your name", new String[]{"Dont worry about my name, you can just call me Doc"});
-		responsesHT.put("Doc", new String[]{"Yes?"});
-	}
-
-	public void changeResponses(int num){
-		responsesHT.clear();
-		switch(num){
-		case 0:
-			responsesHT.put("0", new String[]{"Hello, I'm Dr.Feelgood. Why don't you begin by telling me about yourself, what is your name?", "1"});
-			break;
-		case 1:
-			responsesHT.put("0", new String[]{"And what do you like to do with your spare time?", "2"});
-			responsesHT.put("1", new String[]{"Do you have a job?", "2"});
-			break;
-		case 2:
-			responsesHT.put("0", new String[]{"That's quite interesting, do you often have time for fun?", "3"});
-			responsesHT.put("1", new String[]{"Oh i see, where do you work, do you enjoy your work?", "3"});
-			break;
-		case 3:
-			responsesHT.put("0", new String[]{"What about family, do you have any siblings?", "4"});
-			responsesHT.put("1", new String[]{"Would you consider yourself someone with alot of friends?", "5"});
-			break;
-		case 4:
-			responsesHT.put("0", new String[]{"Do you have any family members that you don't get along with?", "6"});
-			break;
-		case 5:
-			responsesHT.put("0", new String[]{"How many friends can you trust and depend on?", "6"});
-			break;
-		case 6:
-			responsesHT.put("0", new String[]{"Now that I know a little about you, can you tell me the reason you are here?", "7"});
-			break;
-		case 7:
-			responsesHT.put("0", new String[]{"Are you experiencing any emotions more often than normal?", "8"});
-			responsesHT.put("1", new String[]{"Is there anything about your thoughts that concerns you?", "8"});
-			break;
-		case 8:
-			responsesHT.put("0", new String[]{"Is there anything in your life that frustrates you?", "9"});
-			responsesHT.put("1", new String[]{"Is there anything in your life that makes you sad?", "9"});
-			responsesHT.put("2", new String[]{"Is there anything in your life that excites you?", "9"});
-			break;
-		case 9:
-			responsesHT.put("0", new String[]{"Is there anything in your life that frightens you?", "10"});
-			responsesHT.put("1", new String[]{"Is there anything in your life that angers you?", "10"});
-			responsesHT.put("2", new String[]{"Is there anything in your life that makes you happy?", "10"});
-			break;
-		case 10:
-			responsesHT.put("0", new String[]{"Why is it that you have come to seek help now, what has changed?", "11"});
-			break;
-		case 12:
-			responsesHT.put("0", new String[]{"Do you ever feel as if you could accomplish anything?", "13"});
-			responsesHT.put("1", new String[]{"Do you ever experience short periods of innappropriate anger?", "14"});
-			responsesHT.put("2", new String[]{"Do you ever experience long periods of sadness or lonliness?", "15"});
-			break;
-		case 13:
-			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "16"});
-			break;
-		case 14:
-			responsesHT.put("0", new String[]{"What do you think is the cause?", "16"});
-			break;
-		case 15:
-			responsesHT.put("0", new String[]{"Do these feelings often confuse you?", "16"});
-			break;
-		case 16:
-			responsesHT.put("0", new String[]{"Between happiness, excitement, sadness and anger, what emotion do you experience most often?", "100"});
-			break;
-		case 20:
-			responsesHT.put("0", new String[]{"Tell me about something that often frustrates you.", "21"});
-			responsesHT.put("1", new String[]{"Do you ever take out your anger in a physical way?", "22"});
-			responsesHT.put("2", new String[]{"Have you hurt anyone before?", "23"});
-			break;
-		case 21:
-			responsesHT.put("0", new String[]{"Does it seem appropriate to be so bothered by it?", "24"});
-			responsesHT.put("1", new String[]{"How could you avoid it in the future?", "24"});
-			break;
-		case 22:
-			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
-			break;
-		case 23:
-			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
-			responsesHT.put("1", new String[]{"Do you believe they deserved it?", "26"});
-			break;
-		case 24:
-			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
-			break;
-		case 25:
-			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
-			responsesHT.put("1", new String[]{"What do you think is the cause of these feelings?", "27"});
-			responsesHT.put("2", new String[]{"Do these feelings often confuse you?", "27"});
-			break;
-		case 26:
-			responsesHT.put("0", new String[]{"What do you think is the cause of these feelings?", "27"});
-			responsesHT.put("1", new String[]{"Do these feelings often confuse you?", "27"});
-		case 27:
-			responsesHT.put("0", new String[]{"Along with anger, do you ever experience periods of unexplained happiness or excitement?", "28"});
-			responsesHT.put("1", new String[]{"Along with anger, do you ever experience periods of unexplained sadness or loneliness?", "28"});
-			break;
-		case 28:
-			responsesHT.put("0", new String[]{"Between anger, aggression, happiness, and excitement, which do you experience most often?", "100"});
-		case 30:
-			responsesHT.put("0", new String[]{"How often do you feel sad?", "31"});
-			responsesHT.put("1", new String[]{"Do you often feel alone?", "32"});
-			responsesHT.put("2", new String[]{"Tell me about something that makes you sad?", "33"});
-			responsesHT.put("3", new String[]{"Why do you feel this way?", "34"});
-			break;
-		case 31:
-			responsesHT.put("0", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
-			break;
-		case 32:
-			responsesHT.put("0", new String[]{"Why do you feel alone?", "35"});
-			responsesHT.put("1", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
-			break;
-		case 33:
-			responsesHT.put("0", new String[]{"Why does it make you sad?", "35"});
-			break;
-		case 34:
-			responsesHT.put("0", new String[]{"How do you think this could change?", "35"});
-			break;
-		case 35:
-			responsesHT.put("0", new String[]{"Do you ever feel angry or frustrated for no reason?", "36"});
-			responsesHT.put("0", new String[]{"Do you ever experience periods of unexplained joy or confidence?", "36"});
-			break;
-		case 36:
-			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "100"});
-			break;
-		case 100:
-			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
-		}
-	}
-
+	// Initializes the hash table containing trigger words as keys, and an array of integers as values (points towards respective symptom)
 	private void initSymp(){
 		// - - - - - - - - - - Happy and Excited words - - - - - - - - - -
 		// Order of symptom values in array ->  
@@ -192,7 +52,6 @@ public class HTcontroller {
 		symptomsHT.put("kiss", 					new int[]{8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("bliss", 				new int[]{10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("perfect", 				new int[]{10, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - - - Angry and Aggressive words - - - - - - - - - -
 		// Order of symptom values in array ->  
@@ -279,6 +138,7 @@ public class HTcontroller {
 		// symptomsHT.put("", new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 	}
 
+	// Initializes the hash table containing trigger words as keys, and an array of integers as values (points towards respective disorder)
 	private void initDis(){
 		// - - - - - - - - Manic words - - - - - - - - 
 		// Order of disorder values in array ->
@@ -402,5 +262,163 @@ public class HTcontroller {
 		disordersHT.put("transmitting thoughts", new int[]{0, 0, 0, 0, 0, 0, 0, 10});
 		disordersHT.put("not interested", 		new int[]{0, 0, 2, 0, 0, 0, 0, 3});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
+	}
+
+	// Uses the given parameter to determine what branch the conversation is on, and where to go next in the conversation tree
+	// Each key in the hashtable is a choice of what could be said at the current point in conversation
+	// Each value is a two element String array, the first being a response, and the second being which branch to follow next
+	public void changeResponses(int num){
+		responsesHT.clear();
+		switch(num){
+		case 0:
+			responsesHT.put("0", new String[]{"Hello, I'm Dr.Feelgood. Why don't you begin by telling me about yourself, what is your name?", "1"});
+			break;
+		case 1:
+			responsesHT.put("0", new String[]{"And what do you like to do with your spare time?", "2"});
+			responsesHT.put("1", new String[]{"Do you have a job?", "2"});
+			break;
+		case 2:
+			responsesHT.put("0", new String[]{"That's quite interesting, do you often have time for fun?", "3"});
+			responsesHT.put("1", new String[]{"Oh i see, where do you work, do you enjoy your work?", "3"});
+			break;
+		case 3:
+			responsesHT.put("0", new String[]{"What about family, do you have any siblings?", "4"});
+			responsesHT.put("1", new String[]{"Would you consider yourself someone with alot of friends?", "5"});
+			break;
+		case 4:
+			responsesHT.put("0", new String[]{"Do you have any family members that you don't get along with?", "6"});
+			break;
+		case 5:
+			responsesHT.put("0", new String[]{"How many friends can you trust and depend on?", "6"});
+			break;
+		case 6:
+			responsesHT.put("0", new String[]{"Now that I know a little about you, can you tell me the reason you are here?", "7"});
+			break;
+		case 7:
+			responsesHT.put("0", new String[]{"Are you experiencing any emotions more often than normal?", "8"});
+			responsesHT.put("1", new String[]{"Is there anything about your thoughts that concerns you?", "8"});
+			break;
+		case 8:
+			responsesHT.put("0", new String[]{"Is there anything in your life that frustrates you?", "9"});
+			responsesHT.put("1", new String[]{"Is there anything in your life that makes you sad?", "9"});
+			responsesHT.put("2", new String[]{"Is there anything in your life that excites you?", "9"});
+			break;
+		case 9:
+			responsesHT.put("0", new String[]{"Is there anything in your life that frightens you?", "10"});
+			responsesHT.put("1", new String[]{"Is there anything in your life that angers you?", "10"});
+			responsesHT.put("2", new String[]{"Is there anything in your life that makes you happy?", "10"});
+			break;
+		case 10:
+			responsesHT.put("0", new String[]{"Why is it that you have come to seek help now, what has changed?", "11"});
+			break;
+		case 12:
+			responsesHT.put("0", new String[]{"Do you ever feel as if you could accomplish anything?", "13"});
+			responsesHT.put("1", new String[]{"Do you ever experience short periods of innappropriate anger?", "14"});
+			responsesHT.put("2", new String[]{"Do you ever experience long periods of sadness or lonliness?", "15"});
+			break;
+		case 13:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "16"});
+			break;
+		case 14:
+			responsesHT.put("0", new String[]{"What do you think is the cause?", "16"});
+			break;
+		case 15:
+			responsesHT.put("0", new String[]{"Do these feelings often confuse you?", "16"});
+			break;
+		case 16:
+			responsesHT.put("0", new String[]{"Between happiness, excitement, sadness and anger, what emotion do you experience most often?", "100"});
+			break;
+		case 20:
+			responsesHT.put("0", new String[]{"Tell me about something that often frustrates you.", "21"});
+			responsesHT.put("1", new String[]{"Do you ever take out your anger in a physical way?", "22"});
+			responsesHT.put("2", new String[]{"Have you hurt anyone before?", "23"});
+			break;
+		case 21:
+			responsesHT.put("0", new String[]{"Does it seem appropriate to be so bothered by it?", "24"});
+			responsesHT.put("1", new String[]{"How could you avoid it in the future?", "24"});
+			break;
+		case 22:
+			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
+			break;
+		case 23:
+			responsesHT.put("0", new String[]{"Has this form of expression ever got you in trouble?", "25"});
+			responsesHT.put("1", new String[]{"Do you believe they deserved it?", "26"});
+			break;
+		case 24:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
+			break;
+		case 25:
+			responsesHT.put("0", new String[]{"Why do you think you feel this way?", "27"});
+			responsesHT.put("1", new String[]{"What do you think is the cause of these feelings?", "27"});
+			responsesHT.put("2", new String[]{"Do these feelings often confuse you?", "27"});
+			break;
+		case 26:
+			responsesHT.put("0", new String[]{"What do you think is the cause of these feelings?", "27"});
+			responsesHT.put("1", new String[]{"Do these feelings often confuse you?", "27"});
+			break;
+		case 27:
+			responsesHT.put("0", new String[]{"Along with anger, do you ever experience periods of unexplained happiness or excitement?", "28"});
+			responsesHT.put("1", new String[]{"Along with anger, do you ever experience periods of unexplained sadness or loneliness?", "28"});
+			break;
+		case 28:
+			responsesHT.put("0", new String[]{"Between anger, aggression, happiness, and excitement, which do you experience most often?", "100"});
+			break;
+		case 30:
+			responsesHT.put("0", new String[]{"How often do you feel sad?", "31"});
+			responsesHT.put("1", new String[]{"Do you often feel alone?", "32"});
+			responsesHT.put("2", new String[]{"Tell me about something that makes you sad?", "33"});
+			responsesHT.put("3", new String[]{"Why do you feel this way?", "34"});
+			break;
+		case 31:
+			responsesHT.put("0", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
+			break;
+		case 32:
+			responsesHT.put("0", new String[]{"Why do you feel alone?", "35"});
+			responsesHT.put("1", new String[]{"Does it stop you from doing things you used to enjoy?", "35"});
+			break;
+		case 33:
+			responsesHT.put("0", new String[]{"Why does it make you sad?", "35"});
+			break;
+		case 34:
+			responsesHT.put("0", new String[]{"How do you think this could change?", "35"});
+			break;
+		case 35:
+			responsesHT.put("0", new String[]{"Do you ever feel angry or frustrated for no reason?", "36"});
+			responsesHT.put("0", new String[]{"Do you ever experience periods of unexplained joy or confidence?", "36"});
+			break;
+		case 36:
+			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "100"});
+			break;
+		case 40:
+			responsesHT.put("0", new String[]{"Tell me about something that worries.", "41"});
+			responsesHT.put("1", new String[]{"Do you have any reasons to feel afraid?", "42"});
+			responsesHT.put("2", new String[]{"Are you often stressed or anxious?", "43"});
+			break;
+		case 41:
+			responsesHT.put("0", new String[]{"Do you think its reasonable for this to worry you?", "44"});
+			responsesHT.put("1", new String[]{"Have you ever seaked help before?", "44"});
+			responsesHT.put("2", new String[]{"What harm could it cause you?", "44"});
+			break;
+		case 42:
+			responsesHT.put("0", new String[]{"Have you ever seeked help before?", "44"});
+			responsesHT.put("1", new String[]{"What harm could it cause you?", "44"});
+			responsesHT.put("2", new String[]{"Does this fear affect your daily life?", "44"});
+			break;
+		case 43:
+			responsesHT.put("0", new String[]{"Do you think its reasonable for this to worry you?", "44"});
+			responsesHT.put("1", new String[]{"Have you ever seeked help before?", "44"});
+			responsesHT.put("2", new String[]{"Do you know why?", "44"});
+			responsesHT.put("3", new String[]{"What makes you feel this way?", "44"});
+			break;
+		case 44:
+			responsesHT.put("0", new String[]{"Are you often confused with these feelings?", "45"});
+			responsesHT.put("1", new String[]{"Have you ever felt that you are not yourself?", "45"});
+			break;
+		case 45:
+			responsesHT.put("0", new String[]{"Between fear, anxiety, and confusion, which do you experience most often?", "100"});
+			break;
+		case 100:
+			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
+		}
 	}
 }

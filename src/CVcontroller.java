@@ -13,12 +13,19 @@ public class CVcontroller {
 		String reply = "";
 		Hashtable<String, String[]> HT = HTC.getResp();
 		int size = HT.size();
+		int num = generator.nextInt(size);
+		String[] data = HT.get(Integer.toString(num));
+		reply = data[0];
+		int branch = Integer.parseInt(data[1]);
+		
+		String[] pieces = searchString.split(" ");
+		for(String i : pieces){
+			if(i.equals("no"))
+				branch ++;
+		}
 		if(size>0){
-			int num = generator.nextInt(size);
-			String[] data = HT.get(Integer.toString(num));
-			reply = data[0];
 			if(Integer.parseInt(data[1])!=11)
-				HTC.changeResponses(Integer.parseInt(data[1]));
+				HTC.changeResponses(branch);
 			else
 				HTC.changeResponses(focusConvo(STC.symptomStats));
 		}
@@ -49,46 +56,8 @@ public class CVcontroller {
 		else return 0;
 	}
 
-	public String findReply(String searchString, Hashtable<String, String[]> HT){
-		String replyString;
-		String[] SearchPieces = searchString.split(" ");
-		String[] ReplyPieces = null;
-		ReplyPieces = HT.get(searchString);
-		if (ReplyPieces == null){
-			String[] phrases = combine(SearchPieces);
-			int inc = 0;
-			while(ReplyPieces == null && inc < phrases.length && phrases[inc]!=null){
-				ReplyPieces = HT.get(phrases[inc]);
-				inc++;
-			}
-		}
-		if(ReplyPieces == null)
-			ReplyPieces = HT.get("null");
-		replyString = ReplyPieces[generator.nextInt(ReplyPieces.length)];
-		return replyString;
-	}
-
-	public String[] combine(String[] words){
-		String[] phrases;
-		int wLength = words.length;
-		int amount = wLength*wLength;
-		int pos = 0;
-		phrases = new String[amount];
-		for(int k=0;k<wLength;k++){
-			for(int i=0;i<wLength-k;i++){
-				if(i==0)
-					phrases[pos] = words[k];
-				else
-					phrases[pos] = phrases[pos - 1] + " " + words[k+i];
-				pos++;
-			}
-		}
-		return phrases;
-	}
-
 	// -- Returns the given string in lowercase form with punctuation at the end
 	public String cleanup(String input){
-		boolean prevPunc = true;
 		input = input.toLowerCase();
 		String noPunc = "";
 		String punc = "";
@@ -98,20 +67,11 @@ public class CVcontroller {
 			if(((chars[i] > 95) && (chars[i] < 123)) || (chars[i]==32)){
 				// -- If it is, add it to the new phrase
 				noPunc += chars[i];
-				prevPunc = false;
 			}
 			// -- If it is not, add it to the punctuation string
-			else {
-				if(prevPunc)
-					// Keep consecutive punctuations together
-					punc += chars[i];
-				else {
-					punc += " " + chars[i];
-					prevPunc = true;
-				}
-			}
+			else 
+				punc += " " + chars[i];
 		}
 		return noPunc + punc;
 	}
-
 }
