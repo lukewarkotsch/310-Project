@@ -417,6 +417,43 @@ public class HTcontroller {
 		case 45:
 			responsesHT.put("0", new String[]{"Between fear, anxiety, and confusion, which do you experience most often?", "100"});
 			break;
+		case 50:
+			responsesHT.put("0", new String[]{"Do you often lose your train of thought?", "51"});
+			responsesHT.put("1", new String[]{"Have you ever had troubles speaking?", "52"});
+			responsesHT.put("2", new String[]{"Do you ever get lost or forget where you are going?", "53"});
+			responsesHT.put("3", new String[]{"Have you ever noticed any change in you ability to solve problems or puzzles?", "54"});
+			responsesHT.put("4", new String[]{"Do you find it hard to learn new skills?", "55"});
+			
+			break;
+		case 51:
+			responsesHT.put("0", new String[]{"When you do, is it easy to remember?", "56"});
+			responsesHT.put("1", new String[]{"Have you ever had troubles speaking?", "52"});
+			responsesHT.put("2", new String[]{"Do you ever get lost or forget where you are going?", "53"});
+			break;
+		case 52:
+			responsesHT.put("0", new String[]{"Explain what was happening.", "56"});
+			break;
+		case 53:
+			responsesHT.put("0", new String[]{"Have you ever had troubles speaking?", "52"});
+			responsesHT.put("1", new String[]{"How often do you fail to recognize someone who knows you?", "56"});
+			responsesHT.put("2", new String[]{"Have you ever noticed any change in you ability to solve problems or puzzles?", "54"});
+			break;
+		case 54:
+			responsesHT.put("0", new String[]{"Has this caused you to change your habits at all?", "56"});
+			break;
+		case 55:
+			responsesHT.put("0", new String[]{"Have you ever noticed any change in you ability to solve problems or puzzles?", "54"});
+			responsesHT.put("1", new String[]{"What problem did you have?", "56"});
+			responsesHT.put("0", new String[]{"Has this caused you to change your habits at all?", "56"});
+			break;
+		case 56:
+			responsesHT.put("0", new String[]{"Is it hard for you to understand ideas that are not your own?", "57"});
+			responsesHT.put("1", new String[]{"Do you need help from other people to complete daily tasks?", "57"});
+			responsesHT.put("2", new String[]{"Describe to me your day so far.", "57"});
+			break;
+		case 57:
+			responsesHT.put("0", new String[]{"Between confused, fogetfull, and unable to think, which describes you most often?", "100"});
+			break;
 		case 100:
 			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
 		}

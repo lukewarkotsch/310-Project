@@ -17,11 +17,19 @@ public class CVcontroller {
 		String[] data = HT.get(Integer.toString(num));
 		reply = data[0];
 		int branch = Integer.parseInt(data[1]);
-		
+		if(searchString.contains("?"))
+			return "I'm sorry, I'm not supposed to answer questions, only ask them.";
 		String[] pieces = searchString.split(" ");
 		for(String i : pieces){
-			if(i.equals("no"))
-				branch ++;
+			if(i.equals("no")){
+				if(Integer.parseInt(data[1])!=11){
+					HTC.changeResponses(branch);
+					return reply("", HTC, STC);
+				} else {
+					HTC.changeResponses(focusConvo(STC.symptomStats));
+					return reply("", HTC, STC);
+				}
+			}
 		}
 		if(size>0){
 			if(Integer.parseInt(data[1])!=11)
