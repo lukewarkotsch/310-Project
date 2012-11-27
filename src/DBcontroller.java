@@ -27,33 +27,39 @@ public class DBcontroller {
 		convo = new BasicDBObject();
 	}
 
+	// Adds users symptom points to the symptoms document
 	public void addToSymptoms(String[] keys, int[] values){
 		for(int i=0; i<keys.length; i++)
 			symptoms.put(keys[i], values[i]);
 	}
 
+	// Adds users disorder points to the disorders document
 	public void addToDisorders(String[] keys, int[] values){
 		for(int i=0; i<keys.length; i++)
 			disorders.put(keys[i], values[i]);
 	}
 
+	// Adds all words entered by the user to the triggers document
 	public void addToTriggers(String[] keys, int[] values){
 		for(int i=0; i<keys.length; i++)
 			triggers.put(keys[i], values[i]);
 	}
 
+	// Adds each sub-document to the conversation document
 	public void addToConvo(){
 		convo.put("symptoms", symptoms);
 		convo.put("diagnoses", disorders);
 		convo.put("triggers", triggers);
 	}
 
+	// Adds the conversation document to the collection with a date stamp
 	public void addToConvos(){
 		Date date = new Date();
 		convo.put("Date", date.toString());
 		convos.insert(convo);
 	}
 
+	// Prints out all conversation documents in the collection
 	public void printAll(){
 		DBCursor cursor = convos.find();
 		try {

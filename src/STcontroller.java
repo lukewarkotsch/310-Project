@@ -59,6 +59,7 @@ public class STcontroller {
 		}
 	}
 
+	// Uses equations to weight symptoms points and disorder points to find a final diagnosis
 	public void diagnose(){
 		double points;
 		points = (double)(symptomStats[0]*0.2 + symptomStats[1]*0.6 + symptomStats[6]*0.1 + symptomStats[9]*0.1);
@@ -88,6 +89,7 @@ public class STcontroller {
 		diagnoses[7] = (int) ((disorderStats[7] + points) * 100);
 	}
 
+	// Outputs all information gathered from the conversation
 	public String getStats(){
 		diagnose();
 		String output = "";
@@ -96,10 +98,10 @@ public class STcontroller {
 		output += "\n-------------------------------------";
 		output += "\nHappines:\t\t" + symptomStats[0];
 		output += "\nExcitement:\t\t" + symptomStats[1];
-		output += "\nAnger:\t\t\t" + symptomStats[2];
+		output += "\nAnger:\t\t" + symptomStats[2];
 		output += "\nAgression:\t\t" + symptomStats[3];
 		output += "\nSadness:\t\t" + symptomStats[4];
-		output += "\nFear:\t\t\t" + symptomStats[5];
+		output += "\nFear:\t\t" + symptomStats[5];
 		output += "\nAnxiety:\t\t" + symptomStats[6];
 		output += "\nConfusion:\t\t" + symptomStats[7];
 		output += "\nMemory Loss:\t\t" + symptomStats[8];
@@ -109,7 +111,7 @@ public class STcontroller {
 		output += "\n\n-------------------------------------";
 		output += "\nCalculated possible diagnoses:";
 		output += "\n-------------------------------------";
-		output += "\nManic Disorder:\t\t" + diagnoses[0];
+		output += "\nManic Disorder:\t" + diagnoses[0];
 		output += "\nIE Disorder:\t\t" + diagnoses[1];
 		output += "\nDepression:\t\t" + diagnoses[2];
 		output += "\nBipolar Disorder:\t" + diagnoses[3];

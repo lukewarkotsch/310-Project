@@ -9,23 +9,27 @@ public class CVcontroller {
 		generator = new Random();
 	}
 
+	// Evaluates users response, analyzes for symptoms and disorders, and responds accordingly
 	public String reply(String searchString, HTcontroller HTC, STcontroller STC){
 		String reply = "";
 		Hashtable<String, String[]> HT = HTC.getResp();
 		int size = HT.size();
-		int num = generator.nextInt(size);
+		int num = generator.nextInt(size); // number used to pick a response
 		String[] data = HT.get(Integer.toString(num));
-		reply = data[0];
-		int branch = Integer.parseInt(data[1]);
-		if(searchString.contains("?"))
+		reply = data[0]; // Agents response
+		int branch = Integer.parseInt(data[1]); // Next branch to jump to
+		if(searchString.contains("?")) // Avoid answering questions
 			return "I'm sorry, I'm not supposed to answer questions, only ask them.";
 		String[] pieces = searchString.split(" ");
+		// For each word entered by user, look for "no" to skip next question
+		// and look for branch 11 to focus conversation
 		for(String i : pieces){
 			if(i.equals("no")){
 				if(Integer.parseInt(data[1])!=11){
 					HTC.changeResponses(branch);
 					return reply("", HTC, STC);
 				} else {
+					// If at branch 11, focus the conversation
 					HTC.changeResponses(focusConvo(STC.symptomStats));
 					return reply("", HTC, STC);
 				}
@@ -40,7 +44,9 @@ public class CVcontroller {
 		return reply;
 	}
 
+	// Checks which symptoms are being displayed most and jumps to conversation on that topic
 	public int focusConvo(int[] symptomStats) {
+		// Each group is a set of related symptoms
 		int group1 = (symptomStats[0] + symptomStats[1])/2;
 		int group2 = (symptomStats[2] + symptomStats[3])/2;
 		int group3 = symptomStats[4];
@@ -48,6 +54,7 @@ public class CVcontroller {
 		int group5 = (symptomStats[7] + symptomStats[8] + symptomStats[9])/3;
 		int group6 = (symptomStats[10] + symptomStats[11])/2;
 
+		// Find the max group value
 		int max = group1;
 		if(max < group2) max = group2;
 		if(max < group3) max = group3;
@@ -55,6 +62,7 @@ public class CVcontroller {
 		if(max < group5) max = group5;
 		if(max < group6) max = group6;
 
+		// Use max group to jump to new topic
 		if(max == group1) return 12;
 		if(max == group2) return 20;
 		if(max == group3) return 30;

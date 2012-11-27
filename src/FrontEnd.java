@@ -8,11 +8,12 @@ public class FrontEnd {
 	STcontroller STcontroller; // Controls Statistic related functions
 	DBcontroller DBcontroller; // Controls Database related functions
 	Scanner scan;
+	
 	// Instance data initialization
 	String UserInput; 	// Holds input from user
 	String MyReply; 	// Holds the agents reply
 	String PrevReply; 	// Holds the agents previous reply
-	boolean end; 	// Used to determine if the conversation has ended
+	boolean end; 		// Used to determine if the conversation has ended
 
 	public FrontEnd() throws UnknownHostException{
 		HTcontroller = new HTcontroller(); // Controls HashTable related functions
@@ -20,11 +21,12 @@ public class FrontEnd {
 		STcontroller = new STcontroller(); // Controls Statistic related functions
 		DBcontroller = new DBcontroller(); // Controls Database related functions
 		scan = new Scanner(System.in);
+		
 		// Instance data initialization
 		UserInput = ""; 	// Holds input from user
-		MyReply = ""; 	// Holds the agents reply
+		MyReply = ""; 		// Holds the agents reply
 		PrevReply = ""; 	// Holds the agents previous reply
-		end = false; 	// Used to determine if the conversation has ended
+		end = false; 		// Used to determine if the conversation has ended
 		HTcontroller.changeResponses(0); // Initialize conversation tree
 	}
 
@@ -40,6 +42,8 @@ public class FrontEnd {
 		STcontroller.updateStats(UserInput, HTcontroller.getSymp(), STcontroller.symptomStats); // Update symptoms shown by the user
 		STcontroller.updateStats(UserInput, HTcontroller.getDis(), STcontroller.disorderStats); // Update disorders shown by the user
 		STcontroller.triggerStats(UserInput, HTcontroller.getTrig()); // Store words the user has typed
+		if (MyReply.contains("Thank you for your time"))
+			MyReply += "\n" + STcontroller.getStats();
 		return MyReply;
 	}
 
