@@ -61,15 +61,30 @@ public class STcontroller {
 		}
 	}
 
+	public String getMaxSymp(){
+		String temp = "";
+		for(int i=0;i<symptomStats.length;i++){
+			if(symptomStats[i]>0) temp += symptoms[i] + "\n";
+		}
+		return temp;
+	}
+
+	public String getDiagnosis(){
+		diagnose();
+		if(diagnosis.length()>0)
+			return diagnosis + "\n";
+		else return "";
+	}
+
 	// Uses equations to weight symptoms points and disorder points to find a final diagnosis
 	public void diagnose(){
 		double points;
-		int maxPos;
+		int maxPos = -1;
 		int maxVal;
 		points = (double)(symptomStats[0]*0.2 + symptomStats[1]*0.6 + symptomStats[6]*0.1 + symptomStats[9]*0.1);
 		diagnoses[0] = (int) ((disorderStats[0] + points) * 100);
 		maxVal = diagnoses[0];
-		maxPos = 0;
+		if(maxVal>0) maxPos = 0;
 
 		points = (double)(symptomStats[1]*0.1 + symptomStats[2]*0.4 + symptomStats[3]*0.5);
 		diagnoses[1] = (int) ((disorderStats[1] + points) * 100);
@@ -121,10 +136,11 @@ public class STcontroller {
 			maxVal = diagnoses[7];
 			maxPos = 7;
 		}
-		diagnosis = disorders[maxPos];
+		if(maxPos==-1) diagnosis = "";
+		else diagnosis = disorders[maxPos];
 		confidence = maxVal;
 	}
-	
+
 	public void findConfidence(){
 		double total = 0;
 		for(int i : diagnoses){
