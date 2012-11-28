@@ -8,6 +8,8 @@ public class STcontroller {
 
 	String[] symptoms;
 	String[] disorders;
+	String diagnosis;
+	double confidence;
 
 	public STcontroller(){
 		symptomStats = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
@@ -62,38 +64,86 @@ public class STcontroller {
 	// Uses equations to weight symptoms points and disorder points to find a final diagnosis
 	public void diagnose(){
 		double points;
+		int maxPos;
+		int maxVal;
 		points = (double)(symptomStats[0]*0.2 + symptomStats[1]*0.6 + symptomStats[6]*0.1 + symptomStats[9]*0.1);
 		diagnoses[0] = (int) ((disorderStats[0] + points) * 100);
+		maxVal = diagnoses[0];
+		maxPos = 0;
 
 		points = (double)(symptomStats[1]*0.1 + symptomStats[2]*0.4 + symptomStats[3]*0.5);
 		diagnoses[1] = (int) ((disorderStats[1] + points) * 100);
+		if(diagnoses[1]>maxVal){
+			maxVal = diagnoses[1];
+			maxPos = 1;
+		}
 
 		points = (double)(symptomStats[4]*0.75 + symptomStats[7]*0.1 + symptomStats[9]*0.15);
 		diagnoses[2] = (int) ((disorderStats[2] + points) * 100);
+		if(diagnoses[2]>maxVal){
+			maxVal = diagnoses[2];
+			maxPos = 2;
+		}
 
 		if( Math.max(disorderStats[0], disorderStats[2])/2 < Math.min(disorderStats[0], disorderStats[2]) )
 			points = (disorderStats[0] + disorderStats[2])/2;
 		else points = 0;
 		diagnoses[3] = (int) ((disorderStats[3] + points) * 100);
+		if(diagnoses[3]>maxVal){
+			maxVal = diagnoses[3];
+			maxPos = 3;
+		}
 
 		points = (double)(symptomStats[5]*0.2 + symptomStats[6]*0.7 + symptomStats[9]*0.1);
 		diagnoses[4] = (int) ((disorderStats[4] + points) * 100);
+		if(diagnoses[4]>maxVal){
+			maxVal = diagnoses[4];
+			maxPos = 4;
+		}
 
 		points = (double)(symptomStats[7]*0.15 + symptomStats[8]*0.8 + symptomStats[9]*0.05);
 		diagnoses[5] = (int) ((disorderStats[5] + points) * 100);
+		if(diagnoses[5]>maxVal){
+			maxVal = diagnoses[5];
+			maxPos = 5;
+		}
 
 		points = (double)(symptomStats[7]*0.2 + symptomStats[8]*0.5 + symptomStats[9]*0.3);
 		diagnoses[6] = (int) ((disorderStats[6] + points) * 100);
+		if(diagnoses[6]>maxVal){
+			maxVal = diagnoses[6];
+			maxPos = 6;
+		}
 
 		points = (double)(symptomStats[9]*0.2 + symptomStats[10]*0.4 + symptomStats[11]*0.4);
 		diagnoses[7] = (int) ((disorderStats[7] + points) * 100);
+		if(diagnoses[7]>maxVal){
+			maxVal = diagnoses[7];
+			maxPos = 7;
+		}
+		diagnosis = disorders[maxPos];
+		confidence = maxVal;
+	}
+	
+	public void findConfidence(){
+		double total = 0;
+		for(int i : diagnoses){
+			total+=i;
+		}
+		System.out.print("Total: "+ total + ", Confidence: " + confidence);
+		confidence-=500;
+		total-=500;
+		if(confidence<=0)
+			confidence = 0;
+		else confidence=(int)((confidence/total)*100);
 	}
 
 	// Outputs all information gathered from the conversation
 	public String getStats(){
 		diagnose();
-		String output = "";
-		output += "-------------------------------------";
+		findConfidence();
+		String output = "I am %" + confidence + " confident that you have " + diagnosis;
+		output += "\n-------------------------------------";
 		output += "\nSymptoms displayed:";
 		output += "\n-------------------------------------";
 		output += "\nHappines:\t\t" + symptomStats[0];

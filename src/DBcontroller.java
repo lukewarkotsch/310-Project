@@ -20,7 +20,7 @@ public class DBcontroller {
 	public DBcontroller() throws UnknownHostException{
 		mongoInstance = new Mongo("localhost", 27017);		// Connects to local host Mongo Instance on port 27017
 		mongoDB = mongoInstance.getDB("easy-diagnosis"); 	// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
-		convos = mongoDB.getCollection("conversations"); 	// Attempts to get an existing collection from chatterbox, creates one if it does not exist
+		convos = mongoDB.getCollection("conversations"); 	// Attempts to get an existing collection from easy-diagnosis, creates one if it does not exist
 		symptoms = new BasicDBObject();
 		disorders = new BasicDBObject();
 		triggers = new BasicDBObject();
@@ -69,5 +69,10 @@ public class DBcontroller {
 		} finally {
 			cursor.close();
 		}
+	}
+	
+	public void clear(){
+		mongoInstance.dropDatabase("easy-diagnosis");
+		System.out.print("Dropped easy-diagnosis database from localhost");
 	}
 }

@@ -8,7 +8,7 @@ public class FrontEnd {
 	STcontroller STcontroller; // Controls Statistic related functions
 	DBcontroller DBcontroller; // Controls Database related functions
 	Scanner scan;
-	
+
 	// Instance data initialization
 	String UserInput; 	// Holds input from user
 	String MyReply; 	// Holds the agents reply
@@ -21,7 +21,7 @@ public class FrontEnd {
 		STcontroller = new STcontroller(); // Controls Statistic related functions
 		DBcontroller = new DBcontroller(); // Controls Database related functions
 		scan = new Scanner(System.in);
-		
+
 		// Instance data initialization
 		UserInput = ""; 	// Holds input from user
 		MyReply = ""; 		// Holds the agents reply
@@ -42,17 +42,18 @@ public class FrontEnd {
 		STcontroller.updateStats(UserInput, HTcontroller.getSymp(), STcontroller.symptomStats); // Update symptoms shown by the user
 		STcontroller.updateStats(UserInput, HTcontroller.getDis(), STcontroller.disorderStats); // Update disorders shown by the user
 		STcontroller.triggerStats(UserInput, HTcontroller.getTrig()); // Store words the user has typed
-		if (MyReply.contains("Thank you for your time"))
+		if (MyReply.contains("Thank you for your time")){
 			MyReply += "\n" + STcontroller.getStats();
+			end = true;
+		}
 		return MyReply;
 	}
 
-	//System.out.print(STcontroller.getStats()); // Print symptoms show, and possible diagnosis of the user
-	/*
+	public void saveToDB(){
 		DBcontroller.addToSymptoms(STcontroller.symptoms, STcontroller.symptomStats); // Create a document for symptoms shown
 		DBcontroller.addToDisorders(STcontroller.disorders, STcontroller.diagnoses); // Create a document for diagnosis given
 		DBcontroller.addToConvo(); // Create a document for the conversation
 		DBcontroller.addToConvos(); // Add the document to the Database
-	 */
-	//DBcontroller.printAll(); // Print all documents in the database
+		DBcontroller.printAll(); // Print all documents in the database
+	}
 }

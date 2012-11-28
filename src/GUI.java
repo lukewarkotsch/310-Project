@@ -20,6 +20,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Font;
 import javax.swing.border.BevelBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GUI extends JFrame {
 
@@ -28,15 +30,19 @@ public class GUI extends JFrame {
 	private JTextField textField;
 	private JTextArea TextArea;
 	private FrontEnd frontEnd;
+	private static Process proc;
+	private final static String cmd = "C:\\mongodb\\bin\\mongod.exe";
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					proc = Runtime.getRuntime().exec(cmd);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.print(e);
+					proc.destroy();
 				}
 			}
 		});
@@ -66,6 +72,16 @@ public class GUI extends JFrame {
 						FormFactory.RELATED_GAP_ROWSPEC,
 						FormFactory.DEFAULT_ROWSPEC
 				}));
+		addWindowListener(new WindowAdapter() { @Override
+			public void windowClosing(WindowEvent arg0) {
+			if(textField.getText().equals("!cleardb"))
+				frontEnd.DBcontroller.clear();
+			if(frontEnd.end){
+				frontEnd.saveToDB();
+				System.out.print("Conversation was saved to easy-diagnosis database on localhost");
+			}else System.out.print("The conversation ended early and was not saved");
+			proc.destroy();
+		}});
 
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, "2, 2, 3, 1, fill, fill");
@@ -89,30 +105,32 @@ public class GUI extends JFrame {
 		textField.addKeyListener(new KeyAdapter() { @Override
 			public void keyPressed(KeyEvent arg0) {
 			if(arg0.getKeyCode()==10){
-				String user = textField.getText();
-				String agent = frontEnd.addToConvo(user);
-				TextArea.append("\nYou: " +  user);
-				TextArea.append("\nDoc: " + agent);
-				textField.setText("");
+				if(!frontEnd.end){
+					String user = textField.getText();
+					String agent = frontEnd.addToConvo(user);
+					TextArea.append("\nYou: " +  user);
+					TextArea.append("\nDoc: " + agent);
+					textField.setText("");
+				}
 			}
-		}
-		});
+		}});
 		textField.addFocusListener(new FocusAdapter() { @Override
 			public void focusGained(FocusEvent e) {
 			textField.setText("");
-		}
-		});
+		}});
 		contentPane.add(textField, "2, 4, fill, default");
 
 		JButton sendButton = new JButton("Send");
 		sendButton.setBackground(new Color(255, 255, 255));
 		sendButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String user = textField.getText();
-				String agent = frontEnd.addToConvo(user);
-				TextArea.append("\nYou: " +  user);
-				TextArea.append("\nDoc: " + agent);
-				textField.setText("");
+				if(!frontEnd.end){
+					String user = textField.getText();
+					String agent = frontEnd.addToConvo(user);
+					TextArea.append("\nYou: " +  user);
+					TextArea.append("\nDoc: " + agent);
+					textField.setText("");
+				}
 			}
 		});
 		contentPane.add(sendButton, "4, 4");

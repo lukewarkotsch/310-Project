@@ -12,12 +12,12 @@ public class dbRealTest {
 
 
 		System.out.println("//----------------------------------DROPPING A DATABASE FROM A MONGO INSTANCE--------------------------------------------------------------");
-		mongoInstance.dropDatabase("chatterbox"); 	// Drops DB from mongo instance m
+		mongoInstance.dropDatabase("easy-diagnosis"); 	// Drops DB from mongo instance m
 		System.out.println("//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n");
 
 
 		System.out.println("//---------------------------------ADDING A DATABASE AND A COLLECTION----------------------------------------------------------------------");
-		DB chatterbox = mongoInstance.getDB("chatterbox"); 					// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
+		DB chatterbox = mongoInstance.getDB("easy-diagnosis"); 					// Attempts to get an existing DB instance from mongoInstance, creates one if it does not exist
 		DBCollection convos = chatterbox.getCollection("conversations"); 	// Attempts to get an existing collection from chatterbox, creates one if it does not exist
 		System.out.println("//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n");
 
