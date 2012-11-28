@@ -53,27 +53,26 @@ public class DBcontroller {
 	}
 
 	// Adds the conversation document to the collection with a date stamp
-	public void addToConvos(){
+	public void addToConvos(String name){
 		Date date = new Date();
 		convo.put("Date", date.toString());
+		convo.put("Name", name);
 		convos.insert(convo);
 	}
 
 	// Prints out all conversation documents in the collection
 	public void printAll(){
 		DBCursor cursor = convos.find();
-		try {
-			while(cursor.hasNext()) {
-				System.out.println(cursor.next());
-			}
-		} finally {
-			cursor.close();
+		System.out.print(cursor.next());
+		while(cursor.hasNext()) {
+			System.out.println(cursor.next());
 		}
+		cursor.close();
 	}
-	
+
 	// Empties collection from the database
 	public void clear(){
 		mongoInstance.dropDatabase("easy-diagnosis");
-		System.out.print("Dropped easy-diagnosis database from localhost");
+		System.out.print("Dropped easy-diagnosis database from localhost\n");
 	}
 }

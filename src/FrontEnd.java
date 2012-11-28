@@ -13,6 +13,8 @@ public class FrontEnd {
 	String UserInput; 	// Holds input from user
 	String MyReply; 	// Holds the agents reply
 	String PrevReply; 	// Holds the agents previous reply
+	int turn;
+	String name;
 	boolean end; 		// Used to determine if the conversation has ended
 
 	public FrontEnd() throws UnknownHostException{
@@ -27,11 +29,15 @@ public class FrontEnd {
 		MyReply = ""; 		// Holds the agents reply
 		PrevReply = ""; 	// Holds the agents previous reply
 		end = false; 		// Used to determine if the conversation has ended
+		turn = 0;
+		name = "User";
 		HTcontroller.changeResponses(0); // Initialize conversation tree
 	}
 
 	// While the conversation has not ended, determine how to reply, and analyze the user input
 	public String addToConvo(String s){
+		turn ++;
+		if(turn==3) name = s;
 		UserInput = s;
 		PrevReply = MyReply; // Store previous reply for future use
 		// If the user is confirming a question asked by the agent, add that reply to the user input string
@@ -46,6 +52,7 @@ public class FrontEnd {
 			MyReply += "\n" + STcontroller.getStats();
 			end = true;
 		}
+		turn ++;
 		return MyReply;
 	}
 
@@ -53,7 +60,7 @@ public class FrontEnd {
 		DBcontroller.addToSymptoms(STcontroller.symptoms, STcontroller.symptomStats); // Create a document for symptoms shown
 		DBcontroller.addToDisorders(STcontroller.disorders, STcontroller.diagnoses); // Create a document for diagnosis given
 		DBcontroller.addToConvo(); // Create a document for the conversation
-		DBcontroller.addToConvos(); // Add the document to the Database
+		DBcontroller.addToConvos(name); // Add the document to the Database
 		DBcontroller.printAll(); // Print all documents in the database
 	}
 }

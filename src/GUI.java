@@ -85,8 +85,8 @@ public class GUI extends JFrame {
 				frontEnd.DBcontroller.clear();
 			if(frontEnd.end){
 				frontEnd.saveToDB();
-				System.out.print("Conversation was saved to easy-diagnosis database on localhost");
-			}else System.out.print("The conversation ended early and was not saved");
+				System.out.print("Conversation was saved to easy-diagnosis database on localhost\n");
+			}else System.out.print("The conversation ended early and was not saved\n");
 			proc.destroy();
 		}});
 
@@ -148,6 +148,7 @@ public class GUI extends JFrame {
 		tree = new JTree();
 		tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("Hello, I'm Dr.Feelgood. Why don't you begin by telling me about yourself, what is your name?") {
+				private static final long serialVersionUID = 1L;
 				{
 				}
 			}
