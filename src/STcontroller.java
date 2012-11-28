@@ -130,7 +130,6 @@ public class STcontroller {
 		for(int i : diagnoses){
 			total+=i;
 		}
-		System.out.print("Total: "+ total + ", Confidence: " + confidence);
 		confidence-=500;
 		total-=500;
 		if(confidence<=0)

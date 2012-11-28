@@ -71,6 +71,7 @@ public class DBcontroller {
 		}
 	}
 	
+	// Empties collection from the database
 	public void clear(){
 		mongoInstance.dropDatabase("easy-diagnosis");
 		System.out.print("Dropped easy-diagnosis database from localhost");
