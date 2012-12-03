@@ -94,10 +94,10 @@ public class CVcontroller {
 				prevPunc=true;
 			}
 		}
-		System.out.print(noPunc+punc);
 		return noPunc + punc;
 	}
 	
+	// method to spice up conversation so agent has varried "personal" replies
 	public String positiveReply(){
 		String[] responses = new String[]{"Okay, I see", "Hmm that is peculiar", "Right I think I may see where you are coming from", "Lets try to dig deeper into that"};
 		int num = generator.nextInt(responses.length);

@@ -43,12 +43,20 @@ public class HTcontroller {
 		symptomsHT.put("great", 				new int[]{5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("happy", 				new int[]{7, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("excited", 				new int[]{2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("excite", 				new int[]{2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("exciting", 				new int[]{2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("excitement", 			new int[]{2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("fine", 					new int[]{3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("thankyou", 				new int[]{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("thanks", 				new int[]{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("thank", 				new int[]{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("well", 					new int[]{3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("comedy", 				new int[]{5, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("comic", 				new int[]{5, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("funny", 				new int[]{6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("laugh", 				new int[]{6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("laughter", 				new int[]{6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("fun", 					new int[]{6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("kiss", 					new int[]{8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("bliss", 				new int[]{10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("perfect", 				new int[]{10, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
@@ -58,21 +66,44 @@ public class HTcontroller {
 		// [happiness, excitement, anger, aggression, sadness, fear, anxiety, confusion, memory loss, cognitive loss, delusion, hallucination]
 		symptomsHT.put("mad", 					new int[]{0, 0, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("angry", 				new int[]{0, 0, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0});
-		symptomsHT.put("fuck you", 				new int[]{0, 0, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("anger", 				new int[]{0, 0, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("frustrate", 			new int[]{0, 0, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("frustrated", 			new int[]{0, 0, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("frustrating", 			new int[]{0, 0, 7, 2, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("fuck",	 				new int[]{0, 0, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("shit",	 				new int[]{0, 0, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("stupid", 				new int[]{0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("idiot", 				new int[]{0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("hurt", 					new int[]{0, 0, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0});
-		symptomsHT.put("hit", 					new int[]{0, 0, 4, 10, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("hurting", 				new int[]{0, 0, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("hit", 					new int[]{0, 0, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("punch", 				new int[]{0, 0, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("smack", 				new int[]{0, 0, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("slap", 					new int[]{0, 0, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("kill",					new int[]{0, 0, 2, 8, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("killed",				new int[]{0, 0, 2, 8, 0, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("killing",				new int[]{0, 0, 2, 8, 0, 0, 0, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - - - - - - Sad words - - - - - - - - - - - - - - -
 		// Order of symptom values in array ->  
 		// [happiness, excitement, anger, aggression, sadness, fear, anxiety, confusion, memory loss, cognitive loss, delusion, hallucination]
 		symptomsHT.put("sad", 					new int[]{0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("sadness", 				new int[]{0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("bad", 					new int[]{0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("depressed", 			new int[]{0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("depress", 	 			new int[]{0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("depressing", 			new int[]{0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("cry", 					new int[]{0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("crying", 				new int[]{0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("cried", 				new int[]{0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put("cant", 					new int[]{0, 0, 0, 0, 3, 1, 1, 0, 0, 0, 0, 0});
+		symptomsHT.put("wont", 					new int[]{0, 0, 0, 0, 3, 1, 1, 0, 0, 0, 0, 0});
 		symptomsHT.put(":(", 					new int[]{0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0});
 		symptomsHT.put(":'(", 					new int[]{0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("alone", 				new int[]{0, 0, 0, 0, 5, 2, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("lonely", 				new int[]{0, 0, 0, 0, 5, 2, 0, 0, 0, 0, 0, 0});
+		symptomsHT.put("loneliness", 			new int[]{0, 0, 0, 0, 5, 2, 0, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - - - Fearful and anxious words - - - - - - - - - -
@@ -82,6 +113,8 @@ public class HTcontroller {
 		symptomsHT.put("hide", 					new int[]{0, 0, 0, 0, 0, 5, 3, 0, 0, 0, 0, 0});
 		symptomsHT.put("jittery", 				new int[]{0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0});
 		symptomsHT.put("nervous", 				new int[]{0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0});
+		symptomsHT.put("axious", 				new int[]{0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0});
+		symptomsHT.put("anxiety", 				new int[]{0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0});
 		symptomsHT.put("frozen", 				new int[]{0, 0, 0, 0, 0, 7, 7, 0, 0, 4, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
@@ -92,12 +125,15 @@ public class HTcontroller {
 		symptomsHT.put("not sure", 				new int[]{0, 0, 0, 0, 0, 0, 0, 3, 3, 2, 0, 0});
 		symptomsHT.put("?", 					new int[]{0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0});
 		symptomsHT.put("cant remember", 		new int[]{0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0});
+		symptomsHT.put("hard to remember", 		new int[]{0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0});
 		symptomsHT.put("dont understand", 		new int[]{0, 0, 0, 0, 0, 0, 0, 8, 0, 5, 0, 0});
 		symptomsHT.put("who are you", 			new int[]{0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0});
 		symptomsHT.put("dont remember", 		new int[]{0, 0, 0, 0, 0, 0, 0, 0, 8, 2, 0, 0});
 		symptomsHT.put("who am i", 				new int[]{0, 0, 0, 0, 0, 0, 0, 4, 10, 0, 0, 0});
+		symptomsHT.put("where am i", 			new int[]{0, 0, 0, 0, 0, 0, 0, 4, 10, 0, 0, 0});
 		symptomsHT.put("why", 					new int[]{0, 0, 1, 0, 0, 0, 0, 6, 2, 2, 0, 0});
 		symptomsHT.put("doesnt make sense", 	new int[]{0, 0, 2, 0, 0, 0, 0, 8, 0, 1, 0, 0});
+		symptomsHT.put("confuse", 				new int[]{0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0});
 		symptomsHT.put("confused", 				new int[]{0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0});
 		symptomsHT.put("confusing", 			new int[]{0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
@@ -152,6 +188,7 @@ public class HTcontroller {
 		disordersHT.put("amazing", 				new int[]{3, 0, 0, 0, 0, 0, 0, 0});
 		disordersHT.put("annoying", 			new int[]{3, 2, 0, 0, 1, 0, 0, 0});
 		disordersHT.put("really good", 			new int[]{3, 0, 0, 0, 0, 0, 0, 0});
+		disordersHT.put("manic",				new int[]{10, 0, 0, 5, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - IED words - - - - - - - - 
@@ -166,6 +203,7 @@ public class HTcontroller {
 		disordersHT.put("yell", 				new int[]{0, 4, 0, 0, 0, 0, 0, 0});
 		disordersHT.put("violent", 				new int[]{0, 8, 0, 0, 0, 0, 0, 0});
 		disordersHT.put("assault", 				new int[]{0, 10, 0, 0, 0, 0, 0, 0});
+		disordersHT.put("ied",					new int[]{0, 10, 0, 0, 0, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - Depression words - - - - - - - - 
@@ -174,7 +212,6 @@ public class HTcontroller {
 		disordersHT.put("hurt myself", 			new int[]{0, 0, 8, 0, 0, 0, 0, 0});
 		disordersHT.put("suicide", 				new int[]{0, 0, 10, 0, 0, 0, 0, 0});
 		disordersHT.put("hang", 				new int[]{0, 0, 7, 0, 0, 0, 0, 0});
-		disordersHT.put("depressed", 			new int[]{0, 0, 10, 0, 0, 0, 0, 0});
 		disordersHT.put("cant concentrate", 	new int[]{0, 0, 3, 0, 0, 0, 0, 0});
 		disordersHT.put("cant decide", 			new int[]{0, 0, 2, 0, 0, 0, 0, 0});
 		disordersHT.put("tired", 				new int[]{0, 0, 3, 0, 0, 0, 0, 0});
@@ -206,6 +243,7 @@ public class HTcontroller {
 		disordersHT.put("try not to", 			new int[]{0, 0, 0, 0, 5, 0, 0, 0});
 		disordersHT.put("nightmare", 			new int[]{0, 0, 0, 0, 6, 0, 0, 0});
 		disordersHT.put("flashback", 			new int[]{0, 0, 0, 0, 6, 0, 0, 0});
+		disordersHT.put("anxiety",				new int[]{0, 0, 3, 0, 10, 0, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - Amnesia words - - - - - - - - 
@@ -222,6 +260,7 @@ public class HTcontroller {
 		disordersHT.put("confused", 			new int[]{0, 0, 0, 0, 0, 5, 3, 0});
 		disordersHT.put("disoriented", 			new int[]{0, 0, 0, 0, 0, 3, 2, 0});
 		disordersHT.put("memory loss", 			new int[]{0, 0, 0, 0, 0, 8, 6, 0});
+		disordersHT.put("amnesia",				new int[]{0, 0, 0, 0, 0, 10, 0, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - Altzheimers words - - - - - - - - 
@@ -240,6 +279,7 @@ public class HTcontroller {
 		disordersHT.put("cant find", 			new int[]{0, 0, 0, 0, 0, 0, 4, 0});
 		disordersHT.put("misplaced", 			new int[]{0, 0, 0, 0, 0, 0, 5, 0});
 		disordersHT.put("lost", 				new int[]{0, 0, 0, 0, 0, 0, 5, 0});
+		disordersHT.put("altzheimers",			new int[]{0, 0, 0, 0, 0, 0, 10, 0});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 
 		// - - - - - - - - Schizophrenia words - - - - - - - - 
@@ -260,6 +300,8 @@ public class HTcontroller {
 		disordersHT.put("planting thoughts", 	new int[]{0, 0, 0, 0, 0, 0, 0, 10});
 		disordersHT.put("transmitting thoughts", new int[]{0, 0, 0, 0, 0, 0, 0, 10});
 		disordersHT.put("not interested", 		new int[]{0, 0, 2, 0, 0, 0, 0, 3});
+		disordersHT.put("crazy",				new int[]{0, 0, 0, 0, 0, 0, 0, 5});
+		disordersHT.put("schizophrenia",		new int[]{0, 0, 0, 0, 0, 0, 0, 10});
 		// x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 	}
 
@@ -325,7 +367,10 @@ public class HTcontroller {
 			responsesHT.put("0", new String[]{"Do these feelings often confuse you?", "16"});
 			break;
 		case 16:
-			responsesHT.put("0", new String[]{"Between happiness, excitement, sadness and anger, what emotion do you experience most often?", "100"});
+			responsesHT.put("0", new String[]{"Between happiness, excitement, sadness and anger, what emotion do you experience most often?", "17"});
+			break;
+		case 17:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 20:
 			responsesHT.put("0", new String[]{"Tell me about something that often frustrates you.", "21"});
@@ -360,7 +405,10 @@ public class HTcontroller {
 			responsesHT.put("1", new String[]{"Along with anger, do you ever experience periods of unexplained sadness or loneliness?", "28"});
 			break;
 		case 28:
-			responsesHT.put("0", new String[]{"Between anger, aggression, happiness, and excitement, which do you experience most often?", "100"});
+			responsesHT.put("0", new String[]{"Between anger, aggression, happiness, and excitement, which do you experience most often?", "29"});
+			break;
+		case 29:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 30:
 			responsesHT.put("0", new String[]{"How often do you feel sad?", "31"});
@@ -386,7 +434,10 @@ public class HTcontroller {
 			responsesHT.put("0", new String[]{"Do you ever experience periods of unexplained joy or confidence?", "36"});
 			break;
 		case 36:
-			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "100"});
+			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "37"});
+			break;
+		case 37:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 40:
 			responsesHT.put("0", new String[]{"Tell me about something that worries you.", "41"});
@@ -414,7 +465,10 @@ public class HTcontroller {
 			responsesHT.put("1", new String[]{"Have you ever felt that you are not yourself?", "45"});
 			break;
 		case 45:
-			responsesHT.put("0", new String[]{"Between fear, anxiety, and confusion, which do you experience most often?", "100"});
+			responsesHT.put("0", new String[]{"Between fear, anxiety, and confusion, which do you experience most often?", "46"});
+			break;
+		case 46:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 50:
 			responsesHT.put("0", new String[]{"Do you often lose your train of thought?", "51"});
@@ -451,7 +505,10 @@ public class HTcontroller {
 			responsesHT.put("2", new String[]{"Describe to me your day so far.", "57"});
 			break;
 		case 57:
-			responsesHT.put("0", new String[]{"Between confused, fogetfull, and unable to think, which describes you most often?", "100"});
+			responsesHT.put("0", new String[]{"Between confused, fogetfull, and unable to think, which describes you most often?", "58"});
+			break;
+		case 58:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 60:
 			responsesHT.put("0", new String[]{"Do you ever feel out of touch with reality?", "61"});
@@ -472,13 +529,22 @@ public class HTcontroller {
 			responsesHT.put("1", new String[]{"Do you believe the end of the world to be an immediate threat?", "64"});
 			break;
 		case 64:
-			responsesHT.put("0", new String[]{"Pleae tell me which, if any, of these words relate to you: visions, whispering, important, aliens, followed, or conspiracy.", "100"});
+			responsesHT.put("0", new String[]{"Pleae tell me which, if any, of these words relate to you: visions, whispering, important, aliens, followed, or conspiracy.", "65"});
+			break;
+		case 65:
+			responsesHT.put("0", new String[]{"Please elaborate on that for me.", "100"});
 			break;
 		case 100:
-			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
+			responsesHT.put("0", new String[]{"Tell me how you think your life will be 5 years from now.", "101"});
+			responsesHT.put("1", new String[]{"We are almost done here but before you go, is there anything else you need to tell me?", "101"});
+			responsesHT.put("2", new String[]{"I believe we have really exposed something here, what do you think?", "101"});
+			break;
+		case 101:
+			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "102"});
 		}
 	}
 	
+	// Method used to build conversation tree, gets current statement in tree and the next possible responses
 	public String getPath(String currentNode){
 		String path = currentNode + "\n";
 		for(int i=0; i<responsesHT.size();i++)

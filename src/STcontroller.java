@@ -100,10 +100,10 @@ public class STcontroller {
 			maxPos = 2;
 		}
 
-		if( Math.max(disorderStats[0], disorderStats[2])/2 < Math.min(disorderStats[0], disorderStats[2]) )
-			points = (disorderStats[0] + disorderStats[2])/2;
+		if( Math.max(diagnoses[0], diagnoses[2])/2 < Math.min(diagnoses[0], diagnoses[2]) )
+			points = (diagnoses[0] + diagnoses[2]);
 		else points = 0;
-		diagnoses[3] = (int) ((disorderStats[3] + points) * 100);
+		diagnoses[3] = (int) ((disorderStats[3]*100) + points);
 		if(diagnoses[3]>maxVal){
 			maxVal = diagnoses[3];
 			maxPos = 3;

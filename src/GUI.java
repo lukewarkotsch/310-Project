@@ -1,3 +1,7 @@
+/*
+ * Most code in this file is generated, self-written code is commented
+ */
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -46,12 +50,12 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					proc = Runtime.getRuntime().exec(cmd);
+					proc = Runtime.getRuntime().exec(cmd); //execute command to start mongodb instance
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					System.out.print(e);
-					proc.destroy();
+					proc.destroy(); //destroy the process if an exception is thrown
 				}
 			}
 		});
@@ -63,7 +67,7 @@ public class GUI extends JFrame {
 		setTitle("Easy Diagnosis");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 650);
+		setBounds(100, 100, 1000, 650);						// size of window
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -82,9 +86,9 @@ public class GUI extends JFrame {
 				FormFactory.DEFAULT_ROWSPEC,}));
 		addWindowListener(new WindowAdapter() { @Override
 			public void windowClosing(WindowEvent arg0) {
-			if(textField.getText().equals("!cleardb"))
+			if(textField.getText().equals("!cleardb")) // special system code to empty out the db
 				mainController.DBcontroller.clear();
-			if(mainController.end)
+			if(mainController.end)// confirm successful save
 				System.out.print("\nConversation was saved to easy-diagnosis database on localhost\n");
 			else System.out.print("\nThe conversation ended early and was not saved\n");
 			proc.destroy();
@@ -112,7 +116,7 @@ public class GUI extends JFrame {
 		textField.addKeyListener(new KeyAdapter() { @Override
 			public void keyPressed(KeyEvent arg0) {
 			if(arg0.getKeyCode()==10){
-				if(!mainController.end){
+				if(!mainController.end){ // check if enter has been pressed and send the input if conversation isnt over
 					String user = textField.getText();
 					String agent = mainController.addToConvo(user);
 					pathArea.append(mainController.HTcontroller.getPath(agent));
@@ -159,7 +163,7 @@ public class GUI extends JFrame {
 				statsArea.addComponentListener(new ComponentAdapter() { @Override
 					public void componentShown(ComponentEvent arg0) {
 					if(arg0.getID() == 102)
-						statsArea.setText(mainController.DBcontroller.getStats());
+						statsArea.setText(mainController.DBcontroller.getStats()); // load in stats when tab is selected
 				}
 				});
 				
@@ -173,7 +177,7 @@ public class GUI extends JFrame {
 		sendButton.setBackground(new Color(255, 255, 255));
 		sendButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!mainController.end){
+				if(!mainController.end){ // check if send button is pressed and send in input if conversation isnt over
 					String user = textField.getText();
 					String agent = mainController.addToConvo(user);
 					pathArea.append(mainController.HTcontroller.getPath(agent));

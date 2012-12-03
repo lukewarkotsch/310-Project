@@ -49,7 +49,6 @@ public class MainController {
 			MyReply += CVcontroller.positiveReply();
 		}
 		MyReply += CVcontroller.reply(UserInput, HTcontroller, STcontroller); // Determine the agents response
-		System.out.println(UserInput);
 		STcontroller.updateStats(UserInput, HTcontroller.getSymp(), STcontroller.symptomStats); // Update symptoms shown by the user
 		STcontroller.updateStats(UserInput, HTcontroller.getDis(), STcontroller.disorderStats); // Update disorders shown by the user
 		STcontroller.triggerStats(UserInput, HTcontroller.getTrig()); // Store words the user has typed
