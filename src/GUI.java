@@ -36,7 +36,8 @@ public class GUI extends JFrame {
 	private static Process proc;
 	private final static String cmd1 = "mkdir C:\\data";
 	private final static String cmd2 = "mkdir C:\\data\\db";
-	private final static String cmd3 = "C:\\mongodb\\bin\\mongod.exe";
+	private final static String cmd3 = "mv .\\mongodb C:\\";
+	private final static String cmd4 = "C:\\mongodb\\bin\\mongod.exe";
 	private JTabbedPane tabbedPane;
 	private JTextArea symptomsArea;
 	private JTextArea diagnosisArea;
@@ -50,7 +51,8 @@ public class GUI extends JFrame {
 				try {
 					Runtime.getRuntime().exec(cmd1);
 					Runtime.getRuntime().exec(cmd2);
-					proc = Runtime.getRuntime().exec(cmd3);
+					Runtime.getRuntime().exec(cmd3);
+					proc = Runtime.getRuntime().exec(cmd4);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
