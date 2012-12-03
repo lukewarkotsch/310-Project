@@ -32,7 +32,7 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextArea TextArea;
-	private FrontEnd frontEnd;
+	private MainController mainController;
 	private static Process proc;
 	private final static String cmd = "C:\\mongodb\\bin\\mongod.exe";
 	private JTabbedPane tabbedPane;
@@ -58,7 +58,7 @@ public class GUI extends JFrame {
 	}
 
 	public GUI() throws UnknownHostException {
-		frontEnd = new FrontEnd();
+		mainController = new MainController();
 
 		setTitle("Easy Diagnosis");
 		setResizable(false);
@@ -83,8 +83,8 @@ public class GUI extends JFrame {
 		addWindowListener(new WindowAdapter() { @Override
 			public void windowClosing(WindowEvent arg0) {
 			if(textField.getText().equals("!cleardb"))
-				frontEnd.DBcontroller.clear();
-			if(frontEnd.end)
+				mainController.DBcontroller.clear();
+			if(mainController.end)
 				System.out.print("\nConversation was saved to easy-diagnosis database on localhost\n");
 			else System.out.print("\nThe conversation ended early and was not saved\n");
 			proc.destroy();
@@ -112,15 +112,15 @@ public class GUI extends JFrame {
 		textField.addKeyListener(new KeyAdapter() { @Override
 			public void keyPressed(KeyEvent arg0) {
 			if(arg0.getKeyCode()==10){
-				if(!frontEnd.end){
+				if(!mainController.end){
 					String user = textField.getText();
-					String agent = frontEnd.addToConvo(user);
-					pathArea.append(frontEnd.HTcontroller.getPath(agent));
+					String agent = mainController.addToConvo(user);
+					pathArea.append(mainController.HTcontroller.getPath(agent));
 					TextArea.append("\nYou: " +  user);
 					TextArea.append("\nDoc: " + agent);
 					textField.setText("");
-					symptomsArea.setText(frontEnd.STcontroller.getMaxSymp());
-					diagnosisArea.append(frontEnd.STcontroller.getDiagnosis());
+					symptomsArea.setText(mainController.STcontroller.getMaxSymp());
+					diagnosisArea.append(mainController.STcontroller.getDiagnosis());
 				}
 			}
 		}});
@@ -159,7 +159,7 @@ public class GUI extends JFrame {
 				statsArea.addComponentListener(new ComponentAdapter() { @Override
 					public void componentShown(ComponentEvent arg0) {
 					if(arg0.getID() == 102)
-						statsArea.setText(frontEnd.DBcontroller.getStats());
+						statsArea.setText(mainController.DBcontroller.getStats());
 				}
 				});
 				
@@ -173,10 +173,10 @@ public class GUI extends JFrame {
 		sendButton.setBackground(new Color(255, 255, 255));
 		sendButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!frontEnd.end){
+				if(!mainController.end){
 					String user = textField.getText();
-					String agent = frontEnd.addToConvo(user);
-					pathArea.append(frontEnd.HTcontroller.getPath(agent));
+					String agent = mainController.addToConvo(user);
+					pathArea.append(mainController.HTcontroller.getPath(agent));
 					TextArea.append("\nYou: " +  user);
 					TextArea.append("\nDoc: " + agent);
 					textField.setText("");
