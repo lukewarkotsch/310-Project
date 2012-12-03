@@ -146,9 +146,9 @@ public class STcontroller {
 		for(int i : diagnoses){
 			total+=i;
 		}
-		confidence-=500;
-		total-=500;
-		if(confidence<=0)
+		confidence += 500;
+		total += 500;
+		if(confidence<1000)
 			confidence = 0;
 		else confidence=(int)((confidence/total)*100);
 	}
@@ -157,7 +157,7 @@ public class STcontroller {
 	public String getStats(){
 		diagnose();
 		findConfidence();
-		String output = "I am %" + confidence + " confident that you have " + diagnosis;
+		String output = "\nI am %" + confidence + " confident that you have " + diagnosis;
 		output += "\n-------------------------------------";
 		output += "\nSymptoms displayed:";
 		output += "\n-------------------------------------";
@@ -173,7 +173,7 @@ public class STcontroller {
 		output += "\nCognitive Loss:\t\t" + symptomStats[9];
 		output += "\nDelusion:\t\t" + symptomStats[10];
 		output += "\nHallucination:\t\t" + symptomStats[11];
-		output += "\n\n-------------------------------------";
+		output += "\n-------------------------------------";
 		output += "\nCalculated possible diagnoses:";
 		output += "\n-------------------------------------";
 		output += "\nManic Disorder:\t" + diagnoses[0];

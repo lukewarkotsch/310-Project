@@ -22,10 +22,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JTabbedPane;
-import javax.swing.JTree;
 import javax.swing.UIManager;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class GUI extends JFrame {
 
@@ -35,17 +34,23 @@ public class GUI extends JFrame {
 	private JTextArea TextArea;
 	private FrontEnd frontEnd;
 	private static Process proc;
-	private final static String cmd = "C:\\mongodb\\bin\\mongod.exe";
+	private final static String cmd1 = "mkdir C:\\data";
+	private final static String cmd2 = "mkdir C:\\data\\db";
+	private final static String cmd3 = "C:\\mongodb\\bin\\mongod.exe";
 	private JTabbedPane tabbedPane;
 	private JTextArea symptomsArea;
 	private JTextArea diagnosisArea;
-	private JTree tree;
+	private JTextArea statsArea;
+	private JScrollPane scrollPane_2;
+	private JTextArea pathArea;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					proc = Runtime.getRuntime().exec(cmd);
+					Runtime.getRuntime().exec(cmd1);
+					Runtime.getRuntime().exec(cmd2);
+					proc = Runtime.getRuntime().exec(cmd3);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -62,19 +67,19 @@ public class GUI extends JFrame {
 		setTitle("Easy Diagnosis");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1080, 768);
+		setBounds(100, 100, 1000, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("250dlu:grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("35dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("150dlu"),},
-				new RowSpec[] {
+				ColumnSpec.decode("160dlu"),},
+			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -83,10 +88,9 @@ public class GUI extends JFrame {
 			public void windowClosing(WindowEvent arg0) {
 			if(textField.getText().equals("!cleardb"))
 				frontEnd.DBcontroller.clear();
-			if(frontEnd.end){
-				frontEnd.saveToDB();
+			if(frontEnd.end)
 				System.out.print("Conversation was saved to easy-diagnosis database on localhost\n");
-			}else System.out.print("The conversation ended early and was not saved\n");
+			else System.out.print("The conversation ended early and was not saved\n");
 			proc.destroy();
 		}});
 
@@ -95,7 +99,7 @@ public class GUI extends JFrame {
 
 		TextArea = new JTextArea();
 		TextArea.setBackground(new Color(255, 204, 0));
-		TextArea.setFont(new Font("Levenim MT", Font.PLAIN, 16));
+		TextArea.setFont(new Font("Levenim MT", Font.PLAIN, 14));
 		TextArea.setWrapStyleWord(true);
 		TextArea.setLineWrap(true);
 		TextArea.setEditable(false);
@@ -115,6 +119,7 @@ public class GUI extends JFrame {
 				if(!frontEnd.end){
 					String user = textField.getText();
 					String agent = frontEnd.addToConvo(user);
+					pathArea.append(frontEnd.HTcontroller.getPath(agent));
 					TextArea.append("\nYou: " +  user);
 					TextArea.append("\nDoc: " + agent);
 					textField.setText("");
@@ -131,30 +136,41 @@ public class GUI extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(UIManager.getColor("Button.shadow"));
 		contentPane.add(tabbedPane, "6, 2, 1, 3, fill, fill");
-
-		symptomsArea = new JTextArea();
-		symptomsArea.setForeground(new Color(0, 153, 153));
-		symptomsArea.setFont(new Font("Levenim MT", Font.BOLD, 20));
-		symptomsArea.setBackground(new Color(255, 204, 102));
-		tabbedPane.addTab("Symptoms", null, symptomsArea, null);
-		tabbedPane.setEnabledAt(0, true);
-
-		diagnosisArea = new JTextArea();
-		diagnosisArea.setForeground(new Color(0, 153, 153));
-		diagnosisArea.setFont(new Font("Levenim MT", Font.BOLD, 20));
-		diagnosisArea.setBackground(new Color(255, 204, 102));
-		tabbedPane.addTab("Diagnosis", null, diagnosisArea, null);
-
-		tree = new JTree();
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Hello, I'm Dr.Feelgood. Why don't you begin by telling me about yourself, what is your name?") {
-				private static final long serialVersionUID = 1L;
-				{
+		
+				symptomsArea = new JTextArea();
+				symptomsArea.setForeground(new Color(0, 153, 153));
+				symptomsArea.setFont(new Font("Levenim MT", Font.BOLD, 20));
+				symptomsArea.setBackground(new Color(255, 204, 102));
+				tabbedPane.addTab("Symptoms", null, symptomsArea, null);
+				tabbedPane.setEnabledAt(0, true);
+		
+				diagnosisArea = new JTextArea();
+				diagnosisArea.setForeground(new Color(0, 153, 153));
+				diagnosisArea.setFont(new Font("Levenim MT", Font.BOLD, 20));
+				diagnosisArea.setBackground(new Color(255, 204, 102));
+				tabbedPane.addTab("Diagnosis", null, diagnosisArea, null);
+		
+		scrollPane_2 = new JScrollPane();
+		tabbedPane.addTab("Tree", null, scrollPane_2, null);
+		
+		pathArea = new JTextArea();
+		pathArea.setWrapStyleWord(true);
+		pathArea.setEditable(false);
+		pathArea.setBackground(new Color(255, 204, 102));
+		scrollPane_2.setViewportView(pathArea);
+		
+				statsArea = new JTextArea();
+				statsArea.addComponentListener(new ComponentAdapter() { @Override
+					public void componentShown(ComponentEvent arg0) {
+					if(arg0.getID() == 102)
+						statsArea.setText(frontEnd.DBcontroller.getStats());
 				}
-			}
-		));
-		tree.setBackground(new Color(255, 204, 102));
-		tabbedPane.addTab("Conversation Tree", null, tree, null);
+				});
+				
+				statsArea.setBackground(new Color(255, 204, 102));
+				tabbedPane.addTab("Statistics", null, statsArea, null);
+		
+		
 		contentPane.add(textField, "2, 4, fill, default");
 
 		JButton sendButton = new JButton("Send");
@@ -164,6 +180,7 @@ public class GUI extends JFrame {
 				if(!frontEnd.end){
 					String user = textField.getText();
 					String agent = frontEnd.addToConvo(user);
+					pathArea.append(frontEnd.HTcontroller.getPath(agent));
 					TextArea.append("\nYou: " +  user);
 					TextArea.append("\nDoc: " + agent);
 					textField.setText("");

@@ -40,11 +40,14 @@ public class FrontEnd {
 		if(turn==3) name = s;
 		UserInput = s;
 		PrevReply = MyReply; // Store previous reply for future use
-		// If the user is confirming a question asked by the agent, add that reply to the user input string
-		if(UserInput.contains("yes") || UserInput.contains("ya") || UserInput.contains("mhm") || UserInput.contains("sure"))
-			UserInput+=" " + PrevReply.replace("?", ".");
+		MyReply = "";
 		UserInput = CVcontroller.cleanup(UserInput); // Clean the string for analysis
-		MyReply = CVcontroller.reply(UserInput, HTcontroller, STcontroller); // Determine the agents response
+		// If the user is confirming a question asked by the agent, add that reply to the user input string
+		if(UserInput.contains("yes") || UserInput.contains("ya") || UserInput.contains("mhm") || UserInput.contains("sure")){
+			UserInput+=" " + PrevReply.replace("?", ".");
+			MyReply += CVcontroller.positiveReply();
+		}
+		MyReply += CVcontroller.reply(UserInput, HTcontroller, STcontroller); // Determine the agents response
 		STcontroller.updateStats(UserInput, HTcontroller.getSymp(), STcontroller.symptomStats); // Update symptoms shown by the user
 		STcontroller.updateStats(UserInput, HTcontroller.getDis(), STcontroller.disorderStats); // Update disorders shown by the user
 		STcontroller.triggerStats(UserInput, HTcontroller.getTrig()); // Store words the user has typed
@@ -53,6 +56,7 @@ public class FrontEnd {
 			end = true;
 		}
 		turn ++;
+		if(end) saveToDB();
 		return MyReply;
 	}
 

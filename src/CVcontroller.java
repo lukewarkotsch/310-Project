@@ -24,14 +24,14 @@ public class CVcontroller {
 		// For each word entered by user, look for "no" to skip next question
 		// and look for branch 11 to focus conversation
 		for(String i : pieces){
-			if(i.equals("no")){
+			if(i.equals("no") || i.equals("nope") || i.equals("not") || i.equals("nah")){
 				if(Integer.parseInt(data[1])!=11){
 					HTC.changeResponses(branch);
-					return reply("", HTC, STC);
+					return positiveReply() + reply("", HTC, STC);
 				} else {
 					// If at branch 11, focus the conversation
 					HTC.changeResponses(focusConvo(STC.symptomStats));
-					return reply("", HTC, STC);
+					return positiveReply() + reply("", HTC, STC);
 				}
 			}
 		}
@@ -89,5 +89,11 @@ public class CVcontroller {
 				punc += " " + chars[i];
 		}
 		return noPunc + punc;
+	}
+	
+	public String positiveReply(){
+		String[] responses = new String[]{"Okay, I see", "Hmm that is peculiar", "Right I think I may see where you are coming from", "Lets try to dig deeper into that"};
+		int num = generator.nextInt(responses.length);
+		return responses[num] + "\nDoc: ";
 	}
 }

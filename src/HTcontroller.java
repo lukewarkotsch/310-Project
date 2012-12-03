@@ -278,7 +278,7 @@ public class HTcontroller {
 			break;
 		case 2:
 			responsesHT.put("0", new String[]{"That's quite interesting, do you often have time for fun?", "3"});
-			responsesHT.put("1", new String[]{"Oh i see, where do you work, do you enjoy your work?", "3"});
+			responsesHT.put("1", new String[]{"Where do you work, do you enjoy your work?", "3"});
 			break;
 		case 3:
 			responsesHT.put("0", new String[]{"What about family, do you have any siblings?", "4"});
@@ -389,12 +389,12 @@ public class HTcontroller {
 			responsesHT.put("0", new String[]{"Between sadness, anger, and happiness, which do you feel most often?", "100"});
 			break;
 		case 40:
-			responsesHT.put("0", new String[]{"Tell me about something that worries.", "41"});
+			responsesHT.put("0", new String[]{"Tell me about something that worries you.", "41"});
 			responsesHT.put("1", new String[]{"Do you have any reasons to feel afraid?", "42"});
 			responsesHT.put("2", new String[]{"Are you often stressed or anxious?", "43"});
 			break;
 		case 41:
-			responsesHT.put("0", new String[]{"Do you think its reasonable for this to worry you?", "44"});
+			responsesHT.put("0", new String[]{"Do you think it's reasonable for this to worry you?", "44"});
 			responsesHT.put("1", new String[]{"Have you ever seaked help before?", "44"});
 			responsesHT.put("2", new String[]{"What harm could it cause you?", "44"});
 			break;
@@ -404,7 +404,7 @@ public class HTcontroller {
 			responsesHT.put("2", new String[]{"Does this fear affect your daily life?", "44"});
 			break;
 		case 43:
-			responsesHT.put("0", new String[]{"Do you think its reasonable for this to worry you?", "44"});
+			responsesHT.put("0", new String[]{"Do you think it's reasonable for this to worry you?", "44"});
 			responsesHT.put("1", new String[]{"Have you ever seeked help before?", "44"});
 			responsesHT.put("2", new String[]{"Do you know why?", "44"});
 			responsesHT.put("3", new String[]{"What makes you feel this way?", "44"});
@@ -453,8 +453,36 @@ public class HTcontroller {
 		case 57:
 			responsesHT.put("0", new String[]{"Between confused, fogetfull, and unable to think, which describes you most often?", "100"});
 			break;
+		case 60:
+			responsesHT.put("0", new String[]{"Do you ever feel out of touch with reality?", "61"});
+			responsesHT.put("1", new String[]{"Is it difficult for you to convince others of your beliefs?", "61"});
+			responsesHT.put("2", new String[]{"Are your thoughts ever out of your control?", "61"});
+			break;
+		case 61:
+			responsesHT.put("0", new String[]{"Is it difficult for you to find interest in anything?", "62"});
+			responsesHT.put("1", new String[]{"How often do you go out or have fun?", "62"});
+			break;
+		case 62:
+			responsesHT.put("0", new String[]{"Do you ever hear things that no one else does?", "63"});
+			responsesHT.put("1", new String[]{"Do you ever see things that no one else does?", "63"});
+			responsesHT.put("2", new String[]{"Is there anything you regret or feel guilty about?", "63"});
+			break;
+		case 63:
+			responsesHT.put("0", new String[]{"Have you been chosen for any greater purpose?", "64"});
+			responsesHT.put("1", new String[]{"Do you believe the end of the world to be an immediate threat?", "64"});
+			break;
+		case 64:
+			responsesHT.put("0", new String[]{"Pleae tell me which, if any, of these words relate to you: visions, whispering, important, aliens, followed, or conspiracy.", "100"});
+			break;
 		case 100:
 			responsesHT.put("0", new String[]{"Thank you for your time, I think that I have learned enough about you for an accurate diagnosis.", "101"});
 		}
+	}
+	
+	public String getPath(String currentNode){
+		String path = currentNode + "\n";
+		for(int i=0; i<responsesHT.size();i++)
+			path+="\t - " + responsesHT.get(Integer.toString(i))[0] + "\n";
+		return path;
 	}
 }
