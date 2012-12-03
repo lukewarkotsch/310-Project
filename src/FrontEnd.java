@@ -45,9 +45,11 @@ public class FrontEnd {
 		// If the user is confirming a question asked by the agent, add that reply to the user input string
 		if(UserInput.contains("yes") || UserInput.contains("ya") || UserInput.contains("mhm") || UserInput.contains("sure")){
 			UserInput+=" " + PrevReply.replace("?", ".");
+			UserInput = CVcontroller.cleanup(UserInput); // Clean the string for analysis
 			MyReply += CVcontroller.positiveReply();
 		}
 		MyReply += CVcontroller.reply(UserInput, HTcontroller, STcontroller); // Determine the agents response
+		System.out.println(UserInput);
 		STcontroller.updateStats(UserInput, HTcontroller.getSymp(), STcontroller.symptomStats); // Update symptoms shown by the user
 		STcontroller.updateStats(UserInput, HTcontroller.getDis(), STcontroller.disorderStats); // Update disorders shown by the user
 		STcontroller.triggerStats(UserInput, HTcontroller.getTrig()); // Store words the user has typed

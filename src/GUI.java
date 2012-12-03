@@ -34,10 +34,7 @@ public class GUI extends JFrame {
 	private JTextArea TextArea;
 	private FrontEnd frontEnd;
 	private static Process proc;
-	private final static String cmd1 = "mkdir C:\\data";
-	private final static String cmd2 = "mkdir C:\\data\\db";
-	private final static String cmd3 = "mv .\\mongodb C:\\";
-	private final static String cmd4 = "C:\\mongodb\\bin\\mongod.exe";
+	private final static String cmd = "C:\\mongodb\\bin\\mongod.exe";
 	private JTabbedPane tabbedPane;
 	private JTextArea symptomsArea;
 	private JTextArea diagnosisArea;
@@ -49,10 +46,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Runtime.getRuntime().exec(cmd1);
-					Runtime.getRuntime().exec(cmd2);
-					Runtime.getRuntime().exec(cmd3);
-					proc = Runtime.getRuntime().exec(cmd4);
+					proc = Runtime.getRuntime().exec(cmd);
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -91,8 +85,8 @@ public class GUI extends JFrame {
 			if(textField.getText().equals("!cleardb"))
 				frontEnd.DBcontroller.clear();
 			if(frontEnd.end)
-				System.out.print("Conversation was saved to easy-diagnosis database on localhost\n");
-			else System.out.print("The conversation ended early and was not saved\n");
+				System.out.print("\nConversation was saved to easy-diagnosis database on localhost\n");
+			else System.out.print("\nThe conversation ended early and was not saved\n");
 			proc.destroy();
 		}});
 

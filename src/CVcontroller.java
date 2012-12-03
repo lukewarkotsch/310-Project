@@ -77,17 +77,24 @@ public class CVcontroller {
 		input = input.toLowerCase();
 		String noPunc = "";
 		String punc = "";
+		boolean prevPunc = false;
 		char[] chars = input.toCharArray();
 		// -- For each character of the input, check if it is a letter or a space
 		for(int i=0;i<chars.length;i++){
 			if(((chars[i] > 95) && (chars[i] < 123)) || (chars[i]==32)){
 				// -- If it is, add it to the new phrase
 				noPunc += chars[i];
+				prevPunc=false;
 			}
 			// -- If it is not, add it to the punctuation string
-			else 
-				punc += " " + chars[i];
+			else {
+				if(prevPunc)
+					punc+=chars[i];//if last char was punctuation, group with current one
+				else punc+=" "+chars[i];
+				prevPunc=true;
+			}
 		}
+		System.out.print(noPunc+punc);
 		return noPunc + punc;
 	}
 	
